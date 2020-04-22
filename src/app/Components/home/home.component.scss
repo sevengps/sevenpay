@@ -1,0 +1,26 @@
+$secondary: #96b30d;
+$primary: #0767b1;
+$default: #e1e2e7;
+
+.primary {
+  background-color: $primary;
+}
+.accent {
+  background-color: $secondary;
+}
+// .app-home {
+//   height: 100%;
+// }
+
+mat-tab-group {
+  display: flex;
+  flex-grow: 1;
+  margin-bottom: 5rem;
+}
+
+.boder-bottom {
+  margin: 0 auto;
+  width: 100%;
+  height: 2px;
+  background-color: $secondary;
+}

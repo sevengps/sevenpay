@@ -1,0 +1,16 @@
+  <div class="successful-payment" *ngIf="successPayment">
+            <span>
+              Votre paiement de <strong>37588 </strong><small>XAF</small> a
+              &eacute;t&eacute; bien effectu&eacute;
+            </span>
+            <p class="payment-date">Date de paiement : {{ transDate }}</p>
+            <p class="payment-id">
+              Transaction <span class="id">{{ transId }}</span>
+            </p>
+            <img
+              mat-card-image
+              class="successIcon"
+              src="../../../assets/icons/tick.svg"
+              alt=""
+            />
+          </div>

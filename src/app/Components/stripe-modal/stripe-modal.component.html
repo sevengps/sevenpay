@@ -1,0 +1,63 @@
+<!-- <div class="version-info">
+  <h1 mat-dialog-title>Hi {{ data.name }}</h1>
+  <div mat-dialog-content>
+    <p>What's your favorite animal?</p>
+    <mat-form-field>
+      <mat-label>Favorite Animal</mat-label>
+      <input matInput [(ngModel)]="data.animal" />
+    </mat-form-field>
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button (click)="onNoClick()">No Thanks</button>
+    <button mat-button [mat-dialog-close]="data.animal" cdkFocusInitial>
+      Ok
+    </button>
+  </div>
+</div> -->
+
+<!-- STRIPE THINGS HERE -->
+<div class="payment-container" [ngClass]="{ 'loading': loading }">
+  <div class="header-container">
+    <h2 class="header" mat-dialog-title>SevenPay &nbsp; Card Payment</h2>
+  </div>
+  <mat-dialog-content>
+    <form class="stripeContainer">
+      <div class="card-elements">
+        <div class="cardNumber">
+          <div #cardNumber></div>
+        </div>
+
+        <div class="cardExp">
+          <div #cardExpiry></div>
+        </div>
+
+        <div class="cardCvc">
+          <div #cardCvc></div>
+        </div>
+      </div>
+      <div *ngIf="pocessing" [ngClass]="{ 'loading': loading }">
+        <mat-spinner [diameter]="50"></mat-spinner>
+      </div>
+      <p class="cardErrors">
+        {{ cardErrors }}
+      </p>
+       <p class="payment-sucess">
+        {{ paymentsucess }}
+      </p>
+
+      <button
+        mat-raised-button
+        class="paymentBtn"
+        (click)="makePayment($event)"
+      >
+        Payer ${{ total / 500 }}
+      </button>
+      <button mat-raised-button (click)="closeModal()">Cancel</button>
+    </form>
+  </mat-dialog-content>
+</div>
+<!-- END OF STRIPE THINGS -->
+
+<!-- (submit)="payment($event)"
+  [ngClass]="{ toggleCreditCard: !toggleCreditCard }"
+  class="showStripeCard stripeCard" -->

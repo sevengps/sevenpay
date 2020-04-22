@@ -1,0 +1,106 @@
+$secondary: #96b30d;
+$primary: #0767b1;
+$default: #e1e2e7;
+
+.primary {
+  background-color: $primary;
+}
+.accent {
+  background-color: $secondary;
+}
+
+.success-container {
+  width: 60%;
+  height: 100%;
+  margin: 0 auto;
+  margin-top: 2rem;
+
+  mat-card:not([class*="mat-elevation-z"]) {
+    box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 1), 0 1px 1px 0 rgba(0, 0, 0, 1),
+      0 1px 3px 0 rgba(0, 0, 0, 1), 0 1px 1px 0 rgba(0, 0, 0, 1);
+  }
+
+  mat-card {
+    mat-card-header {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      mat-card-title {
+        color: $secondary;
+        font-size: 2rem;
+      }
+    }
+
+    // width: 100%;
+    mat-card-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    mat-card-content {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      margin-top: 1rem;
+    }
+
+    .card-body {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      img {
+        margin: 0 auto;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}
+
+.successIcon {
+  width: 20%;
+  height: 20%;
+  // background-color: $secondary;
+  border-radius: 50%;
+}
+
+.continueBrowsing {
+  width: 40%;
+  color: white;
+}
+
+.head {
+  margin: 0 auto;
+  mat-card-content h2 strong {
+    font-size: 1.5rem;
+    color: $primary;
+    font-weight: 700;
+  }
+
+  mat-card-content h2 small {
+    color: $primary;
+    font-weight: 700;
+  }
+
+  mat-card-content h3 {
+    margin-left: 2.51rem;
+  }
+
+  mat-card-content h4 {
+    margin-left: 5.2rem;
+  }
+}
+
+img {
+  width: 4%;
+  border-radius: 30%;
+}
+.trademark-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  span {
+    margin-right: 0.3rem;
+  }
+}

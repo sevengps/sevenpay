@@ -1,0 +1,52 @@
+$secondary: #96b30d;
+$primary: #0767b1;
+$default: #e1e2e7;
+
+.primary {
+  background-color: $primary;
+}
+.accent {
+  background-color: $secondary;
+}
+
+mat-toolbar {
+  margin-top: 0.5rem;
+}
+.wrapper {
+  height: 80vh;
+  background-color: $default;
+}
+.welcome-container {
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  // border-radius: 2rem;
+  // background-color: whitesmoke;
+  // margin: 5rem;
+}
+.companyHead {
+  margin-top: -10rem;
+}
+.boder-bottom {
+  margin-top: -17.5rem;
+  width: 50%;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: -12rem;
+
+  button {
+    margin-right: 3rem;
+    padding: 0.75rem;
+    font-size: 1rem;
+    border-radius: 2rem;
+    // margin-top: -2rem;
+    &:hover {
+      padding: 0.75rem;
+    }
+  }
+}

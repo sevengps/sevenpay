@@ -1,0 +1,119 @@
+.primary {
+  background-color: #0767b1;
+}
+
+.accent {
+  background-color: #96b30d;
+}
+
+.table-name {
+  margin-bottom: 0rem;
+}
+
+.underline-header {
+  height: 2px;
+  width: 6%;
+  background-color: #0767b1;
+}
+
+.payment-details-container {
+  width: 100%;
+}
+
+.payment-details-container table {
+  width: 100%;
+}
+
+mat-toolbar {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.paymentChioce {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  margin-top: 1.5rem;
+}
+
+.paymentChioce img {
+  width: 60%;
+  height: 60%;
+  cursor: pointer;
+  margin-left: 2rem;
+}
+
+.side-container {
+  width: 100%;
+  margin: 1rem;
+}
+
+.side-container p {
+  font-size: 1.5;
+}
+
+.moneyPaid {
+  color: #0767b1;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.activatePayment {
+  width: 80%;
+}
+
+.payment-details-container {
+  margin: 1rem;
+}
+
+.payment-details-container .table-heading {
+  color: #0767b1;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+
+.total-container p span {
+  color: #0767b1;
+  font-weight: 700;
+}
+
+.total-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.btn-payment-container {
+  margin-top: 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.payment-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.payment-form mat-form-field {
+  width: 80%;
+}
+/*# sourceMappingURL=select-payment.component.css.map */

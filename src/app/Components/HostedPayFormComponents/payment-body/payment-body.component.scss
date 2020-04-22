@@ -1,0 +1,208 @@
+$secondary: #94b30d;
+$primary: #0767b1;
+$default: #ffffff;
+@import url("https://fonts.googleapis.com/css2?family=Rubik&family=Source+Sans+Pro:wght@400;600&display=swap");
+
+.transaction-container {
+  width: inherit;
+  height: 36.4rem;
+  background-color: $default;
+  clip-path: polygon(38% 4%, 100% 4%, 100% 89.5%, 10% 89.5%);
+  opacity: 1;
+}
+
+.elements-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 500px;
+  margin-left: 10rem;
+  width: inherit;
+}
+
+.stepper-container {
+  width: 65%;
+  margin-top: -2.5rem;
+}
+.stepper-head {
+  width: 70%;
+  margin-left: 6rem;
+  display: flex;
+  justify-content: space-between;
+
+  .step-number {
+    padding: 0.5rem;
+    border-radius: 60%;
+    background-color: rgb(194, 187, 187);
+    color: $default;
+    margin-top: -1rem;
+    font-weight: bold;
+  }
+
+  .number1 {
+    background-color: $primary;
+    padding: 0.6rem;
+    // font-size: 1rem;
+  }
+  .number2 {
+    background-color: $primary;
+  }
+  .number3 {
+    background-color: $primary;
+  }
+  .step-connector {
+    width: 11rem;
+    height: 2px;
+    background-color: rgb(177, 170, 170);
+    margin-bottom: -4rem;
+  }
+  .connector1 {
+    background-color: $primary;
+  }
+  .connector2 {
+    background-color: $primary;
+  }
+}
+
+.paymentStep-1 {
+  width: 85%;
+  margin-right: -17.5rem;
+}
+
+.select-form {
+  width: 77%;
+  margin-bottom: 6rem;
+  margin-right: -10rem;
+}
+
+mat-option img {
+  margin-bottom: -0.5rem;
+}
+
+.total-container {
+  margin-top: -7rem;
+  margin-left: 9.5rem;
+  margin-bottom: 3rem;
+  .total {
+    color: #636363;
+    font-family: "Rubik", sans-serif;
+    font-size: 1.8rem;
+  }
+  .amount {
+    color: $secondary;
+    font-size: 2.2rem;
+  }
+  .currency {
+    color: $secondary;
+    margin-left: 0.3rem;
+  }
+}
+
+/* STEP 2*/
+.momoPay {
+  width: 30rem;
+  margin-bottom: 3.5rem;
+  margin-left: 5.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  form {
+    width: 100%;
+    mat-form-field {
+      width: 100%;
+    }
+    span {
+      width: 95%;
+    }
+  }
+}
+
+.visaCardPay-waiting {
+  border: 1px solid #707070;
+  padding: 1px;
+  opacity: 0.3;
+}
+
+.momopay-waiting {
+  border: 1px solid #707070;
+  padding: 1px;
+  opacity: 0.3;
+}
+
+.showStripeCard {
+  display: none;
+}
+
+// fix stepper when visa card is selected
+.fixStepper {
+  margin-top: 2rem;
+}
+
+.fixSuccessStepper {
+  margin-top: 3rem;
+}
+
+/** FIXED CARD ELEMENTS*/
+.fixCardElements {
+  margin-left: 4rem;
+  .payment-card {
+    margin-bottom: -4rem;
+    margin-top: -4rem;
+  }
+  .card-expiration-cvc-container mat-form-field {
+    width: 46%;
+    margin-bottom: 1rem;
+  }
+  .form-spacer {
+    margin-right: 2.3rem;
+  }
+
+  .cardOwner {
+    margin-bottom: 1.5rem;
+  }
+
+  .cardNumber {
+    margin-bottom: 1.5rem;
+  }
+}
+
+// attach for step3
+.fixStepperForStep3 {
+  margin-top: 5rem;
+}
+.successful-payment {
+  font-family: "Source Sans Pro", sans-serif;
+  color: #636363;
+  span {
+    strong,
+    small {
+      color: $primary;
+      font-family: "Source Sans Pro", sans-serif;
+    }
+    small {
+      font-size: 1.2rem;
+    }
+    strong {
+      font-size: 2rem;
+    }
+  }
+  p.payment-date {
+    margin-left: 3rem;
+  }
+  p.payment-id {
+    margin-left: 5.5rem;
+    margin-bottom: 2rem;
+    span {
+      font-size: 1.3rem;
+      font-family: "Source Sans Pro", sans-serif;
+    }
+  }
+}
+
+.successIcon {
+  width: 35%;
+  height: 25%;
+  border-radius: 50%;
+  margin-left: 6.5rem;
+}

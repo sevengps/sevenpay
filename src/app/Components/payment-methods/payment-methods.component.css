@@ -1,0 +1,203 @@
+.primary {
+  background-color: #0767b1;
+}
+
+.accent {
+  background-color: #96b30d;
+}
+
+mat-grid-list {
+  height: auto;
+}
+
+.table-name {
+  margin-bottom: 0rem;
+}
+
+.payment-details-container {
+  width: 100%;
+}
+
+.payment-details-container table {
+  width: 100%;
+}
+
+mat-toolbar {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.underline-header {
+  height: 2px;
+  width: 6%;
+  background-color: #0767b1;
+}
+
+.paymentChioce mat-radio-group {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: (1fr)[3];
+      grid-template-columns: repeat(3, 1fr);
+  margin-top: 1.5rem;
+}
+
+.paymentChioce mat-radio-group mat-radio-button img {
+  margin-left: -0.1rem;
+}
+
+.eu {
+  margin-top: -1rem;
+}
+
+.orange {
+  margin-top: -0.6rem;
+}
+
+.mobileMoney {
+  width: 60%;
+  height: 60%;
+}
+
+.cards {
+  width: 75%;
+  height: 75%;
+}
+
+.side-container {
+  max-width: 100%;
+  margin: 1rem;
+}
+
+.side-container p {
+  font-size: 1.5;
+}
+
+.moneyPaid {
+  color: #0767b1;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.activatePayment {
+  width: 80%;
+}
+
+.payment-details-container {
+  margin: 1rem;
+}
+
+.payment-details-container .table-heading {
+  color: #0767b1;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+}
+
+.total-container p span {
+  color: #0767b1;
+  font-weight: 700;
+}
+
+.total-container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+}
+
+.btn-payment-container {
+  margin-top: -1rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  width: 100%;
+}
+
+.payment-form {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  margin-bottom: 2rem;
+}
+
+.payment-form mat-form-field {
+  width: 80%;
+}
+
+.hideMomo {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.hideCard {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.primary {
+  background-color: #0767b1;
+}
+
+.accent {
+  background-color: #96b30d;
+}
+
+.stripeCard {
+  height: auto;
+  background-color: #838683;
+  border-radius: 2rem;
+  padding: 0.5rem;
+  margin-top: -2rem;
+}
+
+.stripeCard .cardNumber {
+  padding: 0.5rem;
+  background-color: #e1e2e7;
+  margin: 0.5rem;
+  border-radius: 2rem;
+}
+
+.stripeCard .cardExp {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  background-color: #e1e2e7;
+  border-radius: 2rem;
+}
+
+.stripeCard .cardCvc {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  border-radius: 2rem;
+  background-color: #e1e2e7;
+}
+
+.momoContainer {
+  margin-top: 2rem;
+}
+
+.spinner-container {
+  margin: 1rem 0 1rem 12rem;
+}
+
+.showCard {
+  display: none;
+}
+
+.showMomo {
+  display: none;
+}
+/*# sourceMappingURL=payment-methods.component.css.map */

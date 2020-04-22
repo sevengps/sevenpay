@@ -1,0 +1,18 @@
+<div class="app-home">
+<div class="boder-bottom"></div>
+<mat-tab-group [selectedIndex]="6" color="primary">
+  <div class="container">
+    <mat-tab label="Factures"> Receipts go here</mat-tab>
+    <mat-tab label="Paiements"> All payments here</mat-tab>
+    <mat-tab label="Impayees"> others </mat-tab>
+    <mat-tab label="Releve">Releve</mat-tab>
+    <mat-tab label="Reclamation">Reclamation</mat-tab>
+    <mat-tab label="Consommation"> Consumption</mat-tab>
+  </div>
+
+  <mat-tab class="payment-tab" label="Paiements en ligne">
+    <router-outlet></router-outlet>
+  </mat-tab>
+</mat-tab-group>
+
+</div>

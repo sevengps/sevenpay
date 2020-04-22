@@ -1,0 +1,331 @@
+$secondary: #96b30d;
+$primary: #0767b1;
+$default: #e1e2e7;
+
+.primary {
+  background-color: $primary;
+}
+.accent {
+  background-color: $secondary;
+}
+
+mat-grid-list {
+  height: auto;
+}
+
+.table-name {
+  margin-bottom: 0rem;
+}
+
+.payment-details-container {
+  width: 100%;
+  table {
+    width: 100%;
+  }
+}
+
+mat-toolbar {
+  justify-content: space-between;
+}
+
+.underline-header {
+  height: 2px;
+  width: 6%;
+  background-color: $primary;
+}
+
+.paymentChioce {
+  mat-radio-group {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin-top: 1.5rem;
+
+    mat-radio-button {
+      img {
+        margin-left: -0.1rem;
+      }
+    }
+  }
+}
+
+.eu {
+  margin-top: -1rem;
+}
+
+.orange {
+  margin-top: -0.6rem;
+}
+
+.mobileMoney {
+  width: 60%;
+  height: 60%;
+  // margin-left: 2rem;
+}
+.cards {
+  width: 75%;
+  height: 75%;
+  // margin-left: 1.5rem;
+}
+
+.side-container {
+  max-width: 100%;
+  margin: 1rem;
+  p {
+    font-size: 1.5;
+  }
+}
+
+.moneyPaid {
+  color: $primary;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.activatePayment {
+  width: 80%;
+}
+
+.payment-details-container {
+  margin: 1rem;
+  .table-heading {
+    color: $primary;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+  }
+}
+
+.total-container p span {
+  color: $primary;
+  font-weight: 700;
+}
+
+.total-container {
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-payment-container {
+  margin-top: -1rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+.payment-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2rem;
+  mat-form-field {
+    width: 80%;
+  }
+}
+
+// .tickCreditCard {
+//   opacity: 0.3;
+//   cursor: not-allowed;
+// }
+
+.hideMomo {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.hideCard {
+  opacity: 0.3;
+  cursor: not-allowed;
+}
+
+.primary {
+  background-color: $primary;
+}
+.accent {
+  background-color: $secondary;
+}
+
+.stripeCard {
+  height: auto;
+  background-color: rgb(131, 134, 131);
+  border-radius: 2rem;
+  padding: 0.5rem;
+  margin-top: -2rem;
+  .cardNumber {
+    padding: 0.5rem;
+    background-color: $default;
+    margin: 0.5rem;
+    border-radius: 2rem;
+  }
+
+  .cardExp {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    background-color: $default;
+    border-radius: 2rem;
+  }
+
+  .cardCvc {
+    padding: 0.5rem;
+    margin: 0.5rem;
+    border-radius: 2rem;
+    background-color: $default;
+  }
+}
+
+.momoContainer {
+  margin-top: 2rem;
+}
+
+.spinner-container {
+  margin: 1rem 0 1rem 12rem;
+}
+
+.showCard {
+  display: none;
+}
+
+.showMomo {
+  display: none;
+}
+
+//styles here for card
+// .example.example3 {
+//   background-color: #525f7f;
+// }
+
+// .example.example3 * {
+//   font-family: Quicksand, Open Sans, Segoe UI, sans-serif;
+//   font-size: 16px;
+//   font-weight: 600;
+// }
+
+// .example.example3 .fieldset {
+//   margin: 0 15px 30px;
+//   padding: 0;
+//   border-style: none;
+//   display: -ms-flexbox;
+//   display: flex;
+//   -ms-flex-flow: row wrap;
+//   flex-flow: row wrap;
+//   -ms-flex-pack: justify;
+//   justify-content: space-between;
+// }
+
+// .example.example3 .field {
+//   padding: 10px 20px 11px;
+//   background-color: #7488aa;
+//   border-radius: 20px;
+//   width: 100%;
+// }
+
+// .example.example3 .field.half-width {
+//   width: calc(50% - (5px / 2));
+// }
+
+// .example.example3 .field.third-width {
+//   width: calc(33% - (5px / 3));
+// }
+
+// .example.example3 .field + .field {
+//   margin-top: 6px;
+// }
+
+// .example.example3 .field.focus,
+// .example.example3 .field:focus {
+//   color: #424770;
+//   background-color: #f6f9fc;
+// }
+
+// .example.example3 .field.invalid {
+//   background-color: #fa755a;
+// }
+
+// .example.example3 .field.invalid.focus {
+//   background-color: #f6f9fc;
+// }
+
+// .example.example3 .field.focus::-webkit-input-placeholder,
+// .example.example3 .field:focus::-webkit-input-placeholder {
+//   color: #cfd7df;
+// }
+
+// .example.example3 .field.focus::-moz-placeholder,
+// .example.example3 .field:focus::-moz-placeholder {
+//   color: #cfd7df;
+// }
+
+// .example.example3 .field.focus:-ms-input-placeholder,
+// .example.example3 .field:focus:-ms-input-placeholder {
+//   color: #cfd7df;
+// }
+
+// .example.example3 input, .example.example3 button {
+//   -webkit-appearance: none;
+//   -moz-appearance: none;
+//   appearance: none;
+//   outline: none;
+//   border-style: none;
+// }
+
+// .example.example3 input {
+//   color: #fff;
+// }
+
+// .example.example3 input::-webkit-input-placeholder {
+//   color: #9bacc8;
+// }
+
+// .example.example3 input::-moz-placeholder {
+//   color: #9bacc8;
+// }
+
+// .example.example3 input:-ms-input-placeholder {
+//   color: #9bacc8;
+// }
+
+// .example.example3 button {
+//   display: block;
+//   width: calc(100% - 30px);
+//   height: 40px;
+//   margin: 0 15px;
+//   background-color: #fcd669;
+//   border-radius: 20px;
+//   color: #525f7f;
+//   font-weight: 600;
+//   text-transform: uppercase;
+//   cursor: pointer;
+// }
+
+// .example.example3 button:active {
+//   background-color: #f5be58;
+// }
+
+// .example.example3 .error svg .base {
+//   fill: #fa755a;
+// }
+
+// .example.example3 .error svg .glyph {
+//   fill: #fff;
+// }
+
+// .example.example3 .error .message {
+//   color: #fff;
+// }
+
+// .example.example3 .success .icon .border {
+//   stroke: #fcd669;
+// }
+
+// .example.example3 .success .icon .checkmark {
+//   stroke: #fff;
+// }
+
+// .example.example3 .success .title {
+//   color: #fff;
+// }
+
+// .example.example3 .success .message {
+//   color: #9cabc8;
+// }
+
+// .example.example3 .success .reset path {
+//   fill: #fff;
+// }

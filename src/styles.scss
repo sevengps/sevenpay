@@ -1,0 +1,82 @@
+/* You can add global styles to this file, and also import other style files */
+@import "@angular/material/prebuilt-themes/pink-bluegrey.css";
+
+$secondary: #96b30d;
+$primary: #0767b1;
+$default: #e1e2e7;
+
+html,
+body {
+  background-color: pink;
+  height: 100%;
+  app-root {
+    height: 100vh;
+  }
+}
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.appInputField-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50%;
+  // background-color: rgb(131, 134, 131);
+  border-radius: 2rem;
+  padding: 0.5rem;
+  .appInputField {
+    padding: 0.5rem;
+    background-color: $default;
+    margin: 0.5rem;
+    border-radius: 2rem;
+    outline: none;
+    outline-width: 0;
+  }
+}
+
+.companyHead {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 1rem 0 1rem 0rem;
+  // margin-left: -4rem;
+  p {
+    margin-left: 1rem;
+    margin-bottom: -0.3rem;
+    font-size: 2rem;
+  }
+  img {
+    width: 4%;
+    border-radius: 30%;
+  }
+}
+
+.boder-bottom {
+  margin: 0 auto;
+  width: 100%;
+  height: 2px;
+  background-color: $secondary;
+}
+
+@import "~@angular/material/theming";
+@include mat-core();
+
+$easy-light-theme-primary: mat-palette($mat-blue, 900);
+$easy-light-theme-accent: mat-palette($mat-lime, 800);
+$easy-light-theme-warn: mat-palette($mat-grey, 50);
+
+$easy-light-theme: mat-light-theme(
+  $easy-light-theme-primary,
+  $easy-light-theme-accent,
+  $easy-light-theme-warn
+);
+
+@include angular-material-theme($easy-light-theme);
+
+/**
+for payment card
+clip-path: polygon(38% 14%, 100% 14%, 100% 100%, 14% 100%);
+*/

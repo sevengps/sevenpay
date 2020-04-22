@@ -1,0 +1,51 @@
+$secondary: #94b30d;
+$primary: #0767b1;
+$default: #ffffff;
+@import url("https://fonts.googleapis.com/css2?family=Rubik&family=Source+Sans+Pro:wght@400;600&display=swap");
+
+
+
+
+
+// attach for step3
+.stepper-container {
+  width: 65%;
+  margin-bottom: -5rem;
+}
+.successful-payment {
+  margin-bottom: -4rem;
+  margin-top: -7rem;
+  font-family: "Source Sans Pro", sans-serif;
+  color: #636363;
+  span {
+    strong,
+    small {
+      color: $primary;
+      font-family: "Source Sans Pro", sans-serif;
+    }
+    small {
+      font-size: 1.2rem;
+    }
+    strong {
+      font-size: 2rem;
+    }
+  }
+  p.payment-date {
+    margin-left: 3rem;
+  }
+  p.payment-id {
+    margin-left: 5.5rem;
+    margin-bottom: 2rem;
+    span {
+      font-size: 1.3rem;
+      font-family: "Source Sans Pro", sans-serif;
+    }
+  }
+}
+
+.successIcon {
+  width: 35%;
+  height: 25%;
+  border-radius: 50%;
+  margin-left: 6.5rem;
+}

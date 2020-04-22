@@ -1,0 +1,35 @@
+.primary {
+  background-color: #0767b1;
+}
+
+.accent {
+  background-color: #96b30d;
+}
+
+mat-toolbar {
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+mat-toolbar img {
+  height: 70%;
+}
+
+mat-tab-group {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-flex: 1;
+      -ms-flex-positive: 1;
+          flex-grow: 1;
+  margin-bottom: 5rem;
+}
+
+.boder-bottom {
+  margin: 0 auto;
+  width: 100%;
+  height: 2px;
+  background-color: #96b30d;
+}
+/*# sourceMappingURL=home.component.css.map */

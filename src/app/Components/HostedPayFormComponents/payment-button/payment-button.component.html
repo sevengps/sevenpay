@@ -1,0 +1,12 @@
+<div class="payment-button" (click)="next()">
+  <button mat-raised-button class="card-btn next">
+    <span *ngIf="buttonState != 'Loading'">{{ buttonState }}</span>
+    <mat-progress-spinner
+      *ngIf="buttonState === 'Loading'"
+      [diameter]="35"
+      mode="determinate"
+      [value]="80"
+      color="warn"
+    ></mat-progress-spinner>
+  </button>
+</div>

@@ -1,0 +1,24 @@
+$secondary: #94b30d;
+$primary: #0767b1;
+$default: #ffffff;
+@import url("https://fonts.googleapis.com/css2?family=Rubik&family=Source+Sans+Pro:wght@400;600&display=swap");
+
+.payment-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .card-btn {
+    background-color: $secondary;
+    height: 3rem;
+    color: $default;
+    margin-top: -1.8rem;
+    margin-right: -9.5rem;
+    margin-left: 9.5rem;
+    width: 30rem;
+
+    mat-progress-spinner{
+      margin: 0 auto;
+      color: $default;
+    }
+  }
+}

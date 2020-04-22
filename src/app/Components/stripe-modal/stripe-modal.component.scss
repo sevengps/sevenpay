@@ -1,0 +1,74 @@
+$secondary: #94b30d;
+$primary: #0767b1;
+$default: #ffffff;
+@import url("https://fonts.googleapis.com/css2?family=Rubik&family=Source+Sans+Pro:wght@400;600&display=swap");
+
+.payment-container {
+  margin: 0 auto;
+
+  .header-container {
+    background-color: $primary;
+    padding: 0.5rem;
+    .header {
+      font-family: "Source Sans Pro", sans-serif;
+      font-weight: bolder;
+      color: $default;
+      margin: -0.5rem 0rem 0rem 3.5rem;
+    }
+  }
+}
+
+.stripeContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.card-elements {
+  background-color: $secondary;
+}
+.cardNumber {
+  margin: 1.5rem 0.5rem 0rem 0.5rem;
+  background-color: $default;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+.cardExp {
+  margin: 1.5rem 0.5rem 0rem 0.5rem;
+  background-color: $default;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+.cardCvc {
+  margin: 1.5rem 0.5rem 1rem 0.5rem;
+  background-color: $default;
+  padding: 0.5rem;
+  border-radius: 1rem;
+}
+
+.cardErrors {
+  color: red;
+  font-size: 1rem;
+  padding: 1rem;
+  margin: 0rem 0rem 1rem 0rem;
+}
+.paymentBtn {
+  margin-top: -1rem;
+  background-color: $primary;
+  color: $default;
+  margin-bottom: 1.5rem;
+}
+
+.loading {
+  margin: 0 auto;
+  opacity: 0.3;
+}
+
+.payment-sucess {
+  color: green;
+  font-size: 1rem;
+  padding: 1rem;
+  margin: 0rem 0rem 1rem 0rem;
+}

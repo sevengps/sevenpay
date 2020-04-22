@@ -1,0 +1,45 @@
+<div class="success-container">
+  <mat-card>
+    <mat-card-header>
+      <mat-card-title>Paiement Effectu&eacute;</mat-card-title>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+
+    <div class="card-body">
+      <div class="head">
+        <mat-card-content>
+          <h2>
+            Votre paiement de <strong>37588</strong><small>FCFA</small> a
+            &eacute;t&eacute; effectu&eacute;
+          </h2>
+          <h3>Date de paiement : {{ date | date }}</h3>
+          <h4>Transaction # {{ transId }}</h4>
+        </mat-card-content>
+      </div>
+
+      <img
+        mat-card-image
+        class="successIcon"
+        src="../../../assets/icons/tick.svg"
+        alt=""
+      />
+      <mat-card-actions>
+        <button
+          mat-raised-button
+          color="primary"
+          class="continueBrowsing"
+          (click)="continueBrowsing()"
+        >
+          Continuer
+        </button>
+      </mat-card-actions>
+    </div>
+    <div class="trademark-container">
+      <span>Powered By </span>
+      <img
+        src="../../../assets/icons/Seven Pay logo small.png"
+        alt="7 pay Logo"
+      />
+    </div>
+  </mat-card>
+</div>

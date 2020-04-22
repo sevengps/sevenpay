@@ -1,0 +1,94 @@
+$secondary: #96b30d;
+$primary: #0767b1;
+$default: #e1e2e7;
+
+.primary {
+  background-color: $primary;
+}
+.accent {
+  background-color: $secondary;
+}
+
+.table-name {
+  margin-bottom: 0rem;
+}
+
+.underline-header {
+  height: 2px;
+  width: 6%;
+  background-color: $primary;
+}
+
+.payment-details-container {
+  width: 100%;
+  table {
+    width: 100%;
+  }
+}
+
+mat-toolbar {
+  justify-content: space-between;
+}
+
+.paymentChioce {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 1.5rem;
+  img {
+    width: 60%;
+    height: 60%;
+    cursor: pointer;
+    margin-left: 2rem;
+  }
+}
+
+.side-container {
+  width: 100%;
+  margin: 1rem;
+  p {
+    font-size: 1.5;
+  }
+}
+
+.moneyPaid {
+  color: $primary;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.activatePayment {
+  width: 80%;
+}
+
+.payment-details-container {
+  margin: 1rem;
+  .table-heading {
+    color: $primary;
+    margin-top: 1rem;
+    font-size: 1.5rem;
+  }
+}
+
+.total-container p span {
+  color: $primary;
+  font-weight: 700;
+}
+
+.total-container {
+  display: flex;
+  justify-content: flex-end;
+}
+.btn-payment-container {
+  margin-top: 2rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.payment-form {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  mat-form-field {
+    width: 80%;
+  }
+}

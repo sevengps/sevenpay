@@ -1,0 +1,31 @@
+{
+  "name": "sevenpay",
+  "version": "1.0.0",
+  "description": "seven payment saas",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "SEVEN",
+    "HOSTED",
+    "PAY",
+    "SAAS",
+    "7gps"
+  ],
+  "author": "Sinclaire@7gps",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "express-http-proxy": "^1.6.0",
+    "mongoose": "^5.9.7",
+    "streamify-array": "^1.0.1",
+    "stripe": "^8.38.0",
+    "superagent": "^5.2.2"
+  },
+  "devDependencies": {
+    "http-proxy-middleware": "^1.0.3"
+  }
+}

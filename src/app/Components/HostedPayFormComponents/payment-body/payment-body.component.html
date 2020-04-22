@@ -1,0 +1,188 @@
+<div class="transaction-container">
+  <div class="elements-container">
+    <div
+      class="stepper-container"
+      [ngClass]="{ fixStepper: selectedGateway === 'visaCard' && openStep2 }"
+      [ngClass]="{ fixSuccessStepper: openStep3 }"
+    >
+      <div class="stepper-head">
+        <span class="step-number" [ngClass]="{ number1: number1 }">1</span>
+        <span
+          class="step-connector connector1"
+          [ngClass]="{ connector1: connector1 }"
+        ></span>
+        <span class="step-number number2" [ngClass]="{ number2: number2 }"
+          >2</span
+        >
+        <span
+          class="step-connector connector2"
+          [ngClass]="{ connector2: connector2 }"
+        ></span>
+        <span class="step-number number3" [ngClass]="{ number3: number3 }"
+          >3</span
+        >
+      </div>
+    </div>
+
+    <div *ngIf="openStep1" class="paymentStep-1">
+      <div class="total-container">
+        <span class="total">Total:&nbsp;</span>
+        <span class="amount">5874698</span>
+        <span class="currency">XAF</span>
+      </div>
+      <mat-form-field class="select-form">
+        <mat-label>Selectionnez votre mode de paiement</mat-label>
+        <img
+          *ngIf="selectedGateway"
+          matPrefix
+          class="input-icon selectedPayment"
+          src="../../../assets/icons/{{ selectedGateway }}.png"
+          width="50px"
+          height="50px"
+        />
+
+        <mat-select
+          [(value)]="selectedGateway"
+          (selectionChange)="valueChanged($event)"
+        >
+          <mat-option value="mobileMoney">
+            <img
+              matPrefix
+              class="input-icon"
+              src="../../../assets/icons/mobileMoney.png"
+              width="30px"
+              height="30px"
+              alt="mobileMoney"
+            /><span>&nbsp; Mtn Mobile Money</span></mat-option
+          >
+          <mat-option value="orangeMoney">
+            <img
+              matPrefix
+              class="input-icon"
+              src="../../../assets/icons/orangeMoney.png"
+              width="30px"
+              height="30px"
+              alt="orangeMoney"
+            /><span>&nbsp; Orange Money</span></mat-option
+          >
+          <mat-option value="expressUnion">
+            <img
+              matPrefix
+              class="input-icon"
+              src="../../../assets/icons/expressUnion.png"
+              width="30px"
+              height="30px"
+              alt="Express Union"
+            /><span>&nbsp; EU Money</span></mat-option
+          >
+          <mat-option value="visaCard">
+            <img
+              matPrefix
+              class="input-icon"
+              src="../../../assets/icons/visaCard.png"
+              width="30px"
+              height="30px"
+              alt="visaCard"
+            /><span>&nbsp; Visa Card</span>
+          </mat-option>
+          <mat-option value="paypalCard">
+            <img
+              matPrefix
+              class="input-icon"
+              src="../../../assets/icons/paypalCard.png"
+              width="30px"
+              height="30px"
+              alt="paypalCard"
+            /><span>&nbsp; PayPal</span>
+          </mat-option>
+
+          <mat-option value="ubaCard">
+            <img
+              matPrefix
+              class="input-icon"
+              src="../../../assets/icons/ubaCard.png"
+              width="30px"
+              height="30px"
+              alt="ubaCard"
+            />
+            <span>&nbsp; UBA Card</span></mat-option
+          >
+
+          <mat-option value="cardBlue">
+            <img
+              matPrefix
+              class="input-icon"
+              src="../../../assets/icons/cardBlue.png"
+              width="30px"
+              height="30px"
+              alt="cardBlue"
+            />
+            <span>&nbsp; Card B</span></mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <div *ngIf="openStep2" class="paymentStep-2 momoPay">
+      <form *ngIf="selectedGateway === 'mobileMoney'">
+        <mat-form-field [ngClass]="{ 'momopay-waiting': momopayWaiting }">
+          <mat-label>Entrez le numéro de téléphone</mat-label>
+          <input matInput type="text" />
+        </mat-form-field>
+
+        <span
+          >Vos informations personnelles ne seront utilisées à d'autres fins,
+          vous pouvez lire notre
+          <a href="#">politique de confidentialité</a>
+        </span>
+      </form>
+
+      <form
+        *ngIf="selectedGateway === 'visaCard'"
+        class="payment-card"
+        [ngClass]="{ fixCardElements: selectedGateway === 'visaCard' }"
+      >
+        <div [ngClass]="{ 'visaCardPay-waiting': visacardWaiting }">
+          <mat-form-field class="cardOwner">
+            <mat-label>Nom Sur la Carte</mat-label>
+            <input matInput type="text" placeholder="Kambang Sinclaire" />
+          </mat-form-field>
+
+          <mat-form-field class="cardNumber">
+            <mat-label>Num&eacute;ro de Carte</mat-label>
+            <input matInput type="text" placeholder="4242 4242 4242 4242" />
+          </mat-form-field>
+
+          <div class="card-expiration-cvc-container">
+            <!-- card expiration -->
+            <mat-form-field class="expiration">
+              <mat-label>Expiration</mat-label>
+              <input matInput [matDatepicker]="picker" />
+              <mat-datepicker-toggle matSuffix [for]="picker">
+                <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+              </mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+            </mat-form-field>
+            <span class="form-spacer"></span>
+            <!-- card cvc -->
+            <mat-form-field class="cvc">
+              <mat-label>Cvc</mat-label>
+              <input matInput type="text" placeholder=". . ." />
+            </mat-form-field>
+          </div>
+        </div>
+
+        <span
+          >Vos informations personnelles ne seront utilisées à d'autres fins,
+          vous pouvez lire notre
+          <a href="#">politique de confidentialité</a>
+        </span>
+      </form>
+    </div>
+
+    <div *ngIf="openStep3" class="paymentStep-3 momoPay">
+      <app-success-transaction></app-success-transaction>
+    </div>
+
+  </div>
+</div>

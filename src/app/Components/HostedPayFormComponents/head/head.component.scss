@@ -1,0 +1,35 @@
+$secondary: #94b30d;
+$primary: #0767b1;
+$default: #ffffff;
+@import url("https://fonts.googleapis.com/css2?family=Rubik&family=Source+Sans+Pro:wght@400;600&display=swap");
+
+
+
+
+.container-head {
+    width: inherit;
+    height: 3.8rem;
+    color: $default;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+
+    span {
+      margin-top: 1.5rem;
+      font-size: 1.5rem;
+      font-family: "Rubik", sans-serif;
+    }
+    mat-icon.back {
+      font-size: 3.8rem;
+      margin-left: -4rem;
+      margin-top: -0.6rem;
+      cursor: pointer;
+    }
+
+    mat-icon.translate {
+      font-size: 2rem;
+      margin-right: -2rem;
+      margin-top: 1rem;
+      cursor: pointer;
+    }
+  }

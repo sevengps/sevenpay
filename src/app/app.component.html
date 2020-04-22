@@ -1,0 +1,39 @@
+<mat-sidenav-container>
+  <mat-sidenav mode="side" position="end" #sidenavContainer closed>
+    <div class="side-headers">
+      <button mat-icon-button>
+        <mat-icon>card_travel</mat-icon>
+        Ajouter Un Contrat a votre compte
+      </button>
+
+      <button mat-icon-button>
+        <mat-icon>assignment</mat-icon>
+        Effectuer un paiement en ligne
+      </button>
+    </div>
+
+    <div class="mobile-links">
+      <img
+        src="../assets/icons/googlePlay512.png"
+        alt="Google play Store"
+        class="googlePlay"
+      />
+      <img
+        src="../assets/icons/apple-storeFrench.png"
+        alt="Google play Store"
+        class="appleStore"
+      />
+    </div>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+    <!-- <div class="toggleSideNavContainer" (click)="sidenavContainer.toggle()">
+      <mat-icon>menu</mat-icon>
+    </div> -->
+    <mat-toolbar>
+  <img src="../../../assets/icons/logo myeasy Light.png" alt="My Easy Light" />
+  <img src="../../../assets/icons/Eneo Logo.png" alt="Eneo Logo" />
+</mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>

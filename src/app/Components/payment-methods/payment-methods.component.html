@@ -1,0 +1,186 @@
+<mat-grid-list cols="3" gutterSize="1rem">
+  <mat-grid-tile colspan="2">
+    <div class="payment-details-container">
+      <h3 class="table-name">Panier</h3>
+      <mat-divider></mat-divider>
+      <div class="underline-header"></div>
+      <h4 class="table-heading">Reglement des factures du Panier</h4>
+
+      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+        <ng-container matColumnDef="No_deFacture">
+          <th mat-header-cell *matHeaderCellDef>No de Facture</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.No_deFacture }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="Agence">
+          <th mat-header-cell *matHeaderCellDef>Agence</th>
+          <td mat-cell *matCellDef="let element">{{ element.Agence }}</td>
+        </ng-container>
+
+        <ng-container matColumnDef="MoireConcerne">
+          <th mat-header-cell *matHeaderCellDef>Moire Concerne</th>
+          <td mat-cell *matCellDef="let element">
+            {{ element.MoireConcerne }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="MontantPayer">
+          <th mat-header-cell *matHeaderCellDef>Montant a payer</th>
+          <td mat-cell *matCellDef="let element" class="moneyPaid">
+            {{ element.MontantPayer }}
+          </td>
+        </ng-container>
+
+        <ng-container matColumnDef="date">
+          <th mat-header-cell *matHeaderCellDef>Date</th>
+          <td mat-cell *matCellDef="let element">{{ element.date }}</td>
+        </ng-container>
+
+        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+      </table>
+
+      <div class="total-container">
+        <p>
+          Total :<span> {{ total }} FCAF</span>
+        </p>
+      </div>
+    </div>
+  </mat-grid-tile>
+
+  <mat-grid-tile>
+    <div class="side-container">
+      <p>Selectionez votre mode de paiement</p>
+      <mat-divider></mat-divider>
+      <div class="paymentChioce">
+        <mat-radio-group>
+          <mat-radio-button value="orange" class="orange">
+            <img
+              class="mobileMoney"
+              [ngClass]="tickCreditCard"
+              src="../../../assets/icons/orange.png"
+              alt="Orange"
+            />
+          </mat-radio-button>
+
+          <mat-radio-button value="mtn" (click)="openMobileMoneyForm()">
+            <img
+              class="mobileMoney"
+              [ngClass]="hideMomo"
+              src="../../../assets/icons/momo.jpg"
+              alt="Momo"
+            />
+          </mat-radio-button>
+
+          <mat-radio-button value="eu" class="eu">
+            <img
+              class="cards"
+              [ngClass]="tickCreditCard"
+              src="../../../assets/icons/eu2Modified.jpg"
+              alt="eu"
+            />
+          </mat-radio-button>
+
+          <mat-radio-button value="visa">
+            <img
+              class="cards"
+              [ngClass]="tickCreditCard"
+              src="../../../assets/icons/visa.png"
+              alt="Visa"
+            />
+          </mat-radio-button>
+
+          <mat-radio-button value="paypal">
+            <img
+              [ngClass]="tickCreditCard"
+              class="cards"
+              src="../../../assets/icons/paypal.png"
+              alt="Paypal"
+            />
+          </mat-radio-button>
+
+          <mat-radio-button value="masterCard" (click)="openCreditCardForm()">
+            <img
+              class="cards"
+              src="../../../assets/icons/master.png"
+              alt="Master"
+            />
+          </mat-radio-button>
+        </mat-radio-group>
+      </div>
+
+      <form class="payment-form " #Number="ngForm">
+        <div
+          [ngClass]="{ showMomo: !showMomo }"
+          class="stripeCard momoContainer"
+          color="primary"
+        >
+          <input
+            [(ngModel)]="mobileNumber"
+            name="mobileNumber"
+            id="mobileNumber"
+            class="cardNumber"
+            type="text"
+            placeholder="Please enter Mobile Money number"
+          />
+        </div>
+      </form>
+
+      <div class="btn-payment-container" *ngIf="showMomo">
+        <button
+          mat-raised-button
+          color="primary"
+          class="activatePayment"
+          (click)="momoPayment()"
+        >
+          Payer ${{ total / 500 }}
+        </button>
+      </div>
+
+      <!-- ELEMENTS HERE -->
+      <form
+        (submit)="payment($event)"
+        [ngClass]="{ showCard: !showCard }"
+        class="stripeCard"
+      >
+        <div #cardElement id="elementCard">
+          <!-- A Stripe Element will be inserted here. -->
+        </div>
+
+        <div class="cardNumber">
+          <div #cardNumber></div>
+        </div>
+
+        <div class="cardExp">
+          <div #cardExpiry></div>
+        </div>
+
+        <div class="cardCvc">
+          <div #cardCvc></div>
+        </div>
+
+        <!-- Used to display Element errors. -->
+        <p>{{ cardErrors }}</p>
+      </form>
+
+      <div class="btn-payment-container" *ngIf="showCard">
+        <button
+          mat-raised-button
+          color="primary"
+          (click)="payment($event)"
+          class="activatePayment"
+        >
+          Payer ${{ total / 500 }}
+        </button>
+      </div>
+
+      <div class="spinner-container">
+        <mat-spinner *ngIf="loading" [diameter]="30"></mat-spinner>
+        <span class="loading" *ngIf="loading">Loading...</span>
+        <span class="please-wait" *ngIf="loading">Please wait</span>
+      </div>
+    </div>
+  </mat-grid-tile>
+</mat-grid-list>

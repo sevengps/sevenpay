@@ -1,0 +1,266 @@
+$secondary: #94b30d;
+$primary: #0767b1;
+$default: #ffffff;
+@import url("https://fonts.googleapis.com/css2?family=Rubik&family=Source+Sans+Pro:wght@400;600&display=swap");
+
+.primary {
+  background-color: $primary;
+}
+.accent {
+  background-color: $secondary;
+}
+
+.option {
+  display: flex;
+}
+
+.main-container {
+  background: #f2f4f8 0% 0% no-repeat padding-box;
+  opacity: 1;
+}
+
+.payment-container {
+  width: 55.1rem;
+  height: 36.4rem;
+  margin: 0 auto;
+  background: #0061a9 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px 0px #00000029;
+  opacity: 1;
+}
+
+.mobilePhone-Container {
+  margin-top: -34rem;
+  margin-left: -3.6rem;
+
+  img {
+    height: 15%;
+    width: 20%;
+  }
+}
+
+.creditCard-Container {
+  margin-top: -31.5rem;
+  margin-left: -3.6rem;
+
+  img {
+    height: 20%;
+    width: 40%;
+  }
+}
+
+.branding-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5rem;
+  .branding-logo {
+    height: 26px;
+  }
+  .branding-text {
+    height: 19px;
+    text-align: center;
+    font-family: "Source Sans Pro", sans-serif;
+    letter-spacing: 0px;
+    color: #636363;
+    opacity: 1;
+  }
+}
+
+// .mat-form-field-appearance-legacy .mat-form-field-infix {
+//     padding: 1.4375em 0;
+// }
+
+// mat-option span {
+//   margin-top: -1.75rem;
+//   margin-left: 1rem;
+// }
+
+// .select-payment-container {
+//   width: 50%;
+//   margin: 0 auto;
+//   margin-top: 7rem;
+//   mat-card {
+//     width: 100%;
+//     padding-left: 2rem;
+//     mat-card-header {
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+//     }
+
+//     mat-card-actions {
+//       display: flex;
+//       justify-content: center;
+//       align-items: center;
+
+//       .cancelPayment {
+//         margin-left: 2.5rem;
+//         width: 30%;
+//       }
+//       .acceptPayment {
+//         width: 30%;
+//       }
+//     }
+//   }
+// }
+
+// .payment-form {
+//   display: flex;
+//   justify-content: center;
+//   align-items: center;
+//   box-shadow: 10rem;
+//   mat-form-field {
+//     width: 50%;
+//   }
+//   mat-card:not([class*="mat-elevation-z"]) {
+//     box-shadow: 0 2px 1px -1px rgba(0, 0, 0, 1), 0 1px 1px 0 rgba(0, 0, 0, 1),
+//       0 1px 3px 0 rgba(0, 0, 0, 1), 0 1px 1px 0 rgba(0, 0, 0, 1);
+//   }
+// }
+
+// .select-form {
+//   margin-left: 8rem;
+// }
+// .momoForm {
+//   margin-left: 8rem;
+// }
+// .creditCard-container {
+//   display: flex;
+//   flex-direction: column;
+//   mat-card-header {
+//     display: flex;
+//     padding: 0.75rem;
+//     font-size: 2rem;
+//     background-color: $primary;
+//     color: $default;
+//     margin-bottom: 1rem;
+//   }
+
+//   mat-card-header mat-card-title {
+//     font-size: 2.5rem;
+//   }
+//   mat-card-header mat-icon {
+//     justify-self: flex-end;
+//     margin-top: -1.5rem;
+//     margin-left: 9rem;
+//     cursor: pointer;
+//     font-size: 2.5rem;
+//   }
+// }
+
+// .total-payment {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+
+//   .amount {
+//     font-size: 3rem;
+//     // font-weight: 700;
+//     color: $secondary;
+//     margin-top: -0.75rem;
+//     small {
+//       font-size: 0.75rem;
+//     }
+//   }
+// }
+
+// .creditCard-form {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+//   height: auto;
+
+//   span .validity {
+//     width: 51%;
+//     margin-right: 3.2rem;
+//   }
+
+//   span .cvc {
+//     width: 35%;
+//   }
+//   .card-number {
+//     width: 70%;
+//   }
+// }
+
+// .creditCard-select {
+//   display: flex;
+//   flex-direction: column;
+//   align-items: center;
+// }
+
+// .creditCard-form button {
+//   width: 75%;
+//   border-radius: 5rem;
+// }
+// .creditCard-form .confirm {
+//   color: $default;
+// }
+
+// .merchantName {
+//   color: $primary;
+//   font-weight: 700;
+// }
+// // .input-icon {
+
+// // }
+
+// .spinner-container {
+//   margin: 1rem 0 1rem 12rem;
+// }
+
+// #stripeCard {
+//   height: 2rem;
+//   border-radius: 1rem solid $secondary;
+// }
+// .__PrivateStripeElement {
+//   margin: 0 auto !important;
+//   display: flex;
+//   flex-direction: column !important;
+//   align-items: center;
+// }
+
+// .paiement {
+//   width: 80%;
+//   margin-left: 2rem;
+//   margin-bottom: -2rem;
+// }
+
+// .toggleCreditCard {
+//   display: none;
+// }
+// .toggleMobileMoney {
+//   display: none;
+// }
+
+// .stripeCard {
+//   width: 50%;
+//   height: auto;
+//   margin: 0.5rem 0rem 0.5rem 0rem;
+//   margin: 0 auto;
+//   // background-color: rgb(131, 134, 131);
+//   border-radius: 2rem;
+//   padding: 0.5rem 0.5rem 0rem 0.5rem;
+//   padding-bottom: -2.5rem;
+//   .cardNumber {
+//     padding: 0.5rem;
+//     font-size: 1.5rem;
+//     background-color: $default;
+//     margin: 0.5rem;
+//     border-radius: 2rem;
+//   }
+
+//   .cardExp {
+//     padding: 0.5rem;
+//     margin: 0.5rem;
+//     background-color: $default;
+//     border-radius: 2rem;
+//   }
+
+//   .cardCvc {
+//     padding: 0.5rem;
+//     margin: 0.5rem;
+//     border-radius: 2rem;
+//     background-color: $default;
+//   }
+// }

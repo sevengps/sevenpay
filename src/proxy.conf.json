@@ -1,0 +1,9 @@
+{
+  "/payment/**": {
+    "target": "http://192.168.100.10/payments/payments/",
+    "secure": false,
+    "changeOrigin": true,
+    "logLevel": "debug",
+    "pathRewrite": { "^/api": "" }
+  }
+}
