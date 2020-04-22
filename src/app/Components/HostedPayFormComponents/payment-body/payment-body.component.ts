@@ -27,17 +27,17 @@ export class PaymentBodyComponent implements OnInit, OnChanges {
   @Output() emitPreviouState = new EventEmitter();
   @Input() receiveNextActiveState;
   @Input() receivePreviousActiveState;
-  
+
   constructor(
     private router: Router,
     public dialog: MatDialog,
     private paymentService: PaymentsService
-    ) {}
-    
-    successPayment = true;
-    total=37500;
-    mobileNumber: any;
-    loading: boolean;
+  ) {}
+
+  successPayment = true;
+  total = 37500;
+  mobileNumber: any;
+  loading: boolean;
   openStep1 = true;
   openStep2 = false;
   openStep3 = false;
@@ -83,7 +83,7 @@ export class PaymentBodyComponent implements OnInit, OnChanges {
             this.openDialog(current);
           }
           this.openStep2 = true;
-          this.useStripe = false
+          this.useStripe = false;
           this.number2 = true;
           this.connector1 = true;
           this.openStep1 = false;
@@ -96,7 +96,7 @@ export class PaymentBodyComponent implements OnInit, OnChanges {
           if (current === "waiting" || current === "goBackToWaiting") {
             this.visacardWaiting = true;
             this.momopayWaiting = true;
-            this.visacardWaiting = true;
+            this.number2 = true;
             this.openStep2 = true;
             this.connector1 = true;
             this.momopayWaiting = true;
@@ -195,7 +195,7 @@ export class PaymentBodyComponent implements OnInit, OnChanges {
         this.openStep1 = true;
         this.openStep2 = false;
         this.openStep3 = false;
-        this.connector1 = false;
+        this.connector1 = true;
         this.number2 = false;
         this.emitCurrentState.emit("step1");
       } else {
