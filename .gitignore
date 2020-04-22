@@ -23,11 +23,12 @@ libpeerconnection.log/
 npm-debug.log
 testem.log
 typings/
-payments-web
+payments-web/*
+dist/*
 # e2e
 e2e/*.js
 e2e/*.map
-
+test.html
 #System Files
 .DS_Store/
 
