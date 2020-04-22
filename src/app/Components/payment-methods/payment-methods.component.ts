@@ -203,6 +203,7 @@ export class PaymentMethodsComponent implements OnInit {
         id: source.id,
         username: "sinclairegps kambang",
         email: "sinclaire7gps@yahoomail.com",
+        amount: this.total
       };
 
       this.paymentService.makeCreditCardPayments(user).subscribe((response) => {

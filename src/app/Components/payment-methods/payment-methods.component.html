@@ -56,7 +56,11 @@
       <mat-divider></mat-divider>
       <div class="paymentChioce">
         <mat-radio-group>
-          <mat-radio-button value="orange" class="orange">
+          <mat-radio-button
+            value="orange"
+            class="orange"
+            (click)="openMobileMoneyForm()"
+          >
             <img
               class="mobileMoney"
               [ngClass]="tickCreditCard"
@@ -74,7 +78,11 @@
             />
           </mat-radio-button>
 
-          <mat-radio-button value="eu" class="eu">
+          <mat-radio-button
+            value="eu"
+            class="eu"
+            (click)="openMobileMoneyForm()"
+          >
             <img
               class="cards"
               [ngClass]="tickCreditCard"
@@ -83,7 +91,7 @@
             />
           </mat-radio-button>
 
-          <mat-radio-button value="visa">
+          <mat-radio-button value="visa" (click)="openCreditCardForm()">
             <img
               class="cards"
               [ngClass]="tickCreditCard"
@@ -92,7 +100,7 @@
             />
           </mat-radio-button>
 
-          <mat-radio-button value="paypal">
+          <mat-radio-button value="paypal" (click)="openCreditCardForm()">
             <img
               [ngClass]="tickCreditCard"
               class="cards"
@@ -102,16 +110,12 @@
           </mat-radio-button>
 
           <mat-radio-button value="masterCard" (click)="openCreditCardForm()">
-            <img
-              class="cards"
-              src="assets/icons/master.png"
-              alt="Master"
-            />
+            <img class="cards" src="assets/icons/master.png" alt="Master" />
           </mat-radio-button>
         </mat-radio-group>
       </div>
 
-      <form class="payment-form " #Number="ngForm">
+      <form class="payment-form" #Number="ngForm">
         <div
           [ngClass]="{ showMomo: !showMomo }"
           class="stripeCard momoContainer"
