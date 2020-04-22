@@ -1,6 +1,7 @@
-$secondary: #96b30d;
+$secondary: #94b30d;
 $primary: #0767b1;
-$default: #e1e2e7;
+$default: #ffffff;
+@import url("https://fonts.googleapis.com/css2?family=Rubik&family=Source+Sans+Pro:wght@400;600&display=swap");
 
 .primary {
   background-color: $primary;
@@ -108,7 +109,8 @@ mat-toolbar {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
+  width: 80%;
+  margin-left: 3rem;
 }
 .payment-form {
   display: flex;
@@ -144,7 +146,7 @@ mat-toolbar {
 
 .stripeCard {
   height: auto;
-  background-color: rgb(131, 134, 131);
+  background-color: $secondary;
   border-radius: 2rem;
   padding: 0.5rem;
   margin-top: -2rem;
@@ -171,7 +173,21 @@ mat-toolbar {
 }
 
 .momoContainer {
+  height: auto;
+  width: 70%;
+  background-color: $secondary;
+  border-radius: 2rem;
+  padding: 0.3rem;
   margin-top: 2rem;
+}
+
+#mobileNumber {
+  width: 92%;
+  padding: 0.3rem;
+  background-color: $default;
+  margin: 0.5rem;
+  border-radius: 2rem;
+  text-align: center;
 }
 
 .spinner-container {

@@ -118,16 +118,15 @@
       <form class="payment-form" #Number="ngForm">
         <div
           [ngClass]="{ showMomo: !showMomo }"
-          class="stripeCard momoContainer"
+          class="momoContainer"
           color="primary"
         >
           <input
             [(ngModel)]="mobileNumber"
             name="mobileNumber"
             id="mobileNumber"
-            class="cardNumber"
             type="text"
-            placeholder="Please enter Mobile Money number"
+            placeholder="Please enter mobile number"
           />
         </div>
       </form>
