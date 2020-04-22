@@ -27,7 +27,7 @@
     <div *ngIf="openStep1" class="paymentStep-1">
       <div class="total-container">
         <span class="total">Total:&nbsp;</span>
-        <span class="amount">5874698</span>
+        <span class="amount">{{ total }}</span>
         <span class="currency">XAF</span>
       </div>
       <mat-form-field class="select-form">
@@ -142,7 +142,10 @@
         class="payment-card"
         [ngClass]="{ fixCardElements: selectedGateway === 'visaCard' }"
       >
-        <div [ngClass]="{ 'visaCardPay-waiting': visacardWaiting }">
+        <div
+          [ngClass]="{ 'visaCardPay-waiting': visacardWaiting }"
+          *ngIf="!useStripe"
+        >
           <mat-form-field class="cardOwner">
             <mat-label>Nom Sur la Carte</mat-label>
             <input matInput type="text" placeholder="Kambang Sinclaire" />
@@ -183,6 +186,5 @@
     <div *ngIf="openStep3" class="paymentStep-3 momoPay">
       <app-success-transaction></app-success-transaction>
     </div>
-
   </div>
 </div>

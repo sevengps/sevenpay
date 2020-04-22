@@ -1,17 +1,17 @@
-import { SuccessTransactionComponent } from './Components/HostedPayFormComponents/success-transaction/success-transaction.component';
-import { WelcomeComponent } from './Components/welcome/welcome.component';
-import { HostedPaymentComponent } from './Components/hosted-payment/hosted-payment.component';
-import { HomeComponent } from './Components/home/home.component';
-import { PaymentMethodsComponent } from './Components/payment-methods/payment-methods.component';
-import { SuccessPaymentComponent } from './Components/success-payment/success-payment.component';
-import { SelectPaymentComponent } from './Components/select-payment/select-payment.component';
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { SuccessTransactionComponent } from "./Components/HostedPayFormComponents/success-transaction/success-transaction.component";
+import { WelcomeComponent } from "./Components/welcome/welcome.component";
+import { HostedPaymentComponent } from "./Components/hosted-payment/hosted-payment.component";
+import { HomeComponent } from "./Components/home/home.component";
+import { PaymentMethodsComponent } from "./Components/payment-methods/payment-methods.component";
+import { SuccessPaymentComponent } from "./Components/success-payment/success-payment.component";
+import { SelectPaymentComponent } from "./Components/select-payment/select-payment.component";
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
 const routes: Routes = [
   {
     path: "",
-    component: WelcomeComponent,
+    component: SelectPaymentComponent,
   },
   {
     path: "payment",
@@ -58,6 +58,6 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {}

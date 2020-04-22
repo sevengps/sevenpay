@@ -27,24 +27,22 @@ export class PaymentBodyComponent implements OnInit, OnChanges {
   @Output() emitPreviouState = new EventEmitter();
   @Input() receiveNextActiveState;
   @Input() receivePreviousActiveState;
-  total: any;
-  mobileNumber: any;
-  loading: boolean;
-
+  
   constructor(
     private router: Router,
     public dialog: MatDialog,
     private paymentService: PaymentsService
-  ) {}
-
-  successPayment = true;
-  date = new Date().toUTCString;
-  transId = "";
-
+    ) {}
+    
+    successPayment = true;
+    total=37500;
+    mobileNumber: any;
+    loading: boolean;
   openStep1 = true;
   openStep2 = false;
   openStep3 = false;
   selectedGateway = "mobileMoney";
+  useStripe = true;
   connector1 = false;
   connector2 = false;
   number1 = true;
@@ -85,6 +83,7 @@ export class PaymentBodyComponent implements OnInit, OnChanges {
             this.openDialog(current);
           }
           this.openStep2 = true;
+          this.useStripe = false
           this.number2 = true;
           this.connector1 = true;
           this.openStep1 = false;
@@ -184,22 +183,21 @@ export class PaymentBodyComponent implements OnInit, OnChanges {
   openDialog(current): void {
     const dialogRef = this.dialog.open(StripeModalComponent, {
       width: "450px",
-      height: "430px",
+      height: "470px",
       direction: "ltr",
       data: { name: this.name, animal: this.animal },
+      disableClose: true,
     });
 
     dialogRef.afterClosed().subscribe((result) => {
       console.log(result);
       if (result === "cancelled") {
-        this.openStep2 = true;
-        this.number2 = true;
-        this.connector1 = true;
-        this.openStep1 = false;
+        this.openStep1 = true;
+        this.openStep2 = false;
         this.openStep3 = false;
-        this.visacardWaiting = false;
-        this.momopayWaiting = false;
-        this.emitCurrentState.emit("step2");
+        this.connector1 = false;
+        this.number2 = false;
+        this.emitCurrentState.emit("step1");
       } else {
         this.openStep3 = true;
         this.number3 = true;

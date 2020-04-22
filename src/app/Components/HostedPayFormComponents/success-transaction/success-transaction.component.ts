@@ -11,7 +11,7 @@ export class SuccessTransactionComponent implements OnInit {
   constructor() {}
   successPayment = true;
 
-  transId =
-    "N° TR54HA00959";
+  transId ="N° TR54HA00959";
+  total = 37500;
   ngOnInit() {}
 }

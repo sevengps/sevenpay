@@ -1,5 +1,5 @@
 <!-- <div class="companyHead">
-  <img src="../../../assets/icons/Seven Pay logo small.png" alt="7 pay Logo" />
+  <img src="assets/icons/Seven Pay logo small.png" alt="7 pay Logo" />
   <p class="mat-h2">SevenPay Hosted Payment</p>
 </div> -->
 
@@ -21,13 +21,19 @@
 
     <!-- side icons for card and phone -->
     <div
-      *ngIf="selectedGateway === 'mobileMoney' && formState === 'step2'"
+      *ngIf="
+        (selectedGateway === 'mobileMoney' && formState === 'step2') ||
+        (selectedGateway === 'mobileMoney' && formState === 'waiting')
+      "
       class="mobilePhone-Container"
     >
       <img src="assets/icons/Phoneeneo@2x.png" alt="" />
     </div>
     <div
-      *ngIf="selectedGateway === 'visaCard' && formState === 'step2'"
+      *ngIf="
+        (selectedGateway === 'visaCard' && formState === 'step2') ||
+        (selectedGateway === 'visaCard' && formState === 'waiting')
+      "
       class="creditCard-Container"
     >
       <img src="assets/icons/creditCard.png" alt="" />
@@ -115,7 +121,7 @@
             *ngIf="selectedGateway === 'mobileMoney'"
             matPrefix
             class="input-icon"
-            src="../../../assets/icons/momo.jpg"
+            src="assets/icons/momo.jpg"
             width="34px"
             height="34px"
           />
@@ -123,7 +129,7 @@
             *ngIf="selectedGateway === 'visaCard'"
             matPrefix
             class="input-icon"
-            src="../../../assets/icons/visa.png"
+            src="assets/icons/visa.png"
             width="50px"
             height="50px"
           />
@@ -133,7 +139,7 @@
               <img
                 matPrefix
                 class="input-icon"
-                src="../../../assets/icons/momo.jpg"
+                src="assets/icons/momo.jpg"
                 width="30px"
                 height="30px"
                 alt="masterCard"
@@ -143,7 +149,7 @@
               <img
                 matPrefix
                 class="input-icon"
-                src="../../../assets/icons/orange.png"
+                src="assets/icons/orange.png"
                 width="30px"
                 height="30px"
                 alt="masterCard"
@@ -153,7 +159,7 @@
               <img
                 matPrefix
                 class="input-icon"
-                src="../../../assets/icons/eu2Modified.jpg"
+                src="assets/icons/eu2Modified.jpg"
                 width="30px"
                 height="30px"
                 alt="Express Union"
@@ -163,7 +169,7 @@
               <img
                 matPrefix
                 class="input-icon"
-                src="../../../assets/icons/visa.png"
+                src="assets/icons/visa.png"
                 width="30px"
                 height="30px"
                 alt="masterCard"
@@ -173,7 +179,7 @@
               <img
                 matPrefix
                 class="input-icon"
-                src="../../../assets/icons/paypal.png"
+                src="assets/icons/paypal.png"
                 width="30px"
                 height="30px"
                 alt="masterCard"
@@ -183,7 +189,7 @@
               <img
                 matPrefix
                 class="input-icon"
-                src="../../../assets/icons/master.png"
+                src="assets/icons/master.png"
                 width="30px"
                 height="30px"
                 alt="masterCard"

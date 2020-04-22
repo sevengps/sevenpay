@@ -39,12 +39,15 @@ $default: #ffffff;
 }
 
 .creditCard-Container {
-  margin-top: -31.5rem;
-  margin-left: -3.6rem;
+  margin-top: -30rem;
+  margin-left: -4rem;
+  position: absolute;
+  z-index: 1;
 
   img {
     height: 20%;
-    width: 40%;
+    width: 37%;
+    z-index: 99;
   }
 }
 
