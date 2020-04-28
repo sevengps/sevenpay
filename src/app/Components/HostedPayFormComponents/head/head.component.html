@@ -1,5 +1,10 @@
 <div class="container-head">
   <mat-icon class="back" (click)="gotoPrevious()">keyboard_arrow_left</mat-icon>
-  <span>{{paymentHeader}}</span>
-  <mat-icon class="translate">g_translate</mat-icon>
+  <span class="Not-responsive">{{ paymentHeader }}</span>
+  <span class="responsive">{{ paymentHeaderResponsive }}</span>
+  <!-- <mat-icon class="translate">g_translate</mat-icon> -->
+  <select name="selectLanguage" id="language">
+    <option id="english" value="ENG"> ENG</option>
+    <option id="french" value="FR"> FR</option>
+  </select>
 </div>

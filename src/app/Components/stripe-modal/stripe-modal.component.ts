@@ -17,8 +17,8 @@ declare const Stripe; // : stripe.StripeStatic;
 })
 export class StripeModalComponent implements OnInit {
   constructor(
-    public dialogRef: MatDialogRef<StripeModalComponent>,
-    @Inject(MAT_DIALOG_DATA) public data: DialogData,
+    // public dialogRef: MatDialogRef<StripeModalComponent>,
+    // @Inject(MAT_DIALOG_DATA) public data: DialogData,
     private paymentService: PaymentsService
   ) {}
 
@@ -28,17 +28,18 @@ export class StripeModalComponent implements OnInit {
   @ViewChild("cardCvc") cardCvcElement: ElementRef;
   stripe;
   card;
-  cardErrors;
-  paymentsucess;
+  cardErrorOrPaymentSuccess;
+  cardError = false;
+  paymentSuccess = false;
   cardNumber: any;
   cardExpiry: any;
   cardCvc: any;
-  total = 3787;
+  total = 37500;
   loading = false;
   pocessing = false;
 
   onNoClick(): void {
-    this.dialogRef.close();
+    // this.dialogRef.close();
   }
   ngOnInit() {
     const style = {
@@ -59,21 +60,32 @@ export class StripeModalComponent implements OnInit {
     this.cardNumber.mount(this.cardNumberElement.nativeElement);
 
     this.cardNumber.addEventListener("change", ({ error }) => {
-      this.cardErrors = error && error.message;
+      this.cardErrorOrPaymentSuccess = error && error.message;
+      this.cardError = true;
     });
 
-    this.cardExpiry = elements.create("cardExpiry");
+    this.cardExpiry = elements.create("cardExpiry", {
+      showIcon: true,
+      iconStyle: "solid",
+      placeholder: "09/22",
+    });
     this.cardExpiry.mount(this.cardExpiryElement.nativeElement);
 
     this.cardExpiry.addEventListener("change", ({ error }) => {
-      this.cardErrors = error && error.message;
+      this.cardErrorOrPaymentSuccess = error && error.message;
+      this.cardError = true;
     });
 
-    this.cardCvc = elements.create("cardCvc");
+    this.cardCvc = elements.create("cardCvc", {
+      showIcon: true,
+      iconStyle: "solid",
+      placeholder: "645",
+    });
     this.cardCvc.mount(this.cardCvcElement.nativeElement);
 
     this.cardCvc.addEventListener("change", ({ error }) => {
-      this.cardErrors = error && error.message;
+      this.cardErrorOrPaymentSuccess = error && error.message;
+      this.cardError = true;
     });
   }
 
@@ -81,7 +93,8 @@ export class StripeModalComponent implements OnInit {
     event.preventDefault();
     const { source, error } = await this.stripe.createSource(this.cardNumber);
     if (error) {
-      this.cardErrors = error.message;
+      this.cardErrorOrPaymentSuccess = error.message;
+      this.cardError = true;
     } else {
       this.pocessing = true;
       this.loading = true;
@@ -98,19 +111,20 @@ export class StripeModalComponent implements OnInit {
             if (response.message === "Payment was successful.") {
               this.loading = false;
               this.pocessing = false;
-              this.paymentsucess = response.message;
+              this.cardErrorOrPaymentSuccess = response.message;
+              this.paymentSuccess = true;
               setTimeout(() => {
-                this.dialogRef.close();
-              }, 2000);
+                // this.dialogRef.close();
+              }, 1000);
             }
           }
-        }, 2000);
+        }, 1000);
       });
     }
   }
 
   closeModal() {
-    this.dialogRef.close("cancelled");
+    // this.dialogRef.close("cancelled");
   }
 }
 export interface DialogData {

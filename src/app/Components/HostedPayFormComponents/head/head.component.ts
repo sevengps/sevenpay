@@ -16,7 +16,8 @@ import {
 export class HeadComponent implements OnInit, OnChanges {
   constructor() {}
 
-  paymentHeader = "Selectionnez de votre mode de paiement";
+  @Input() paymentHeader;
+  @Input() paymentHeaderResponsive;
   @Input() formState;
   @Output() emitPreviousStateEvent = new EventEmitter();
   previousEvent;
@@ -28,8 +29,7 @@ export class HeadComponent implements OnInit, OnChanges {
       let change = changes[propertyName];
       let current = change.currentValue;
       let previous = change.previousValue;
-      console.log('current from head '+current);
-      console.log('previous from head '+previous);
+
       if (current === "step2") {
         this.previousEvent = "goBackToStep1";
       } else {
@@ -37,7 +37,23 @@ export class HeadComponent implements OnInit, OnChanges {
           this.previousEvent = "goBackToStep2";
         } else {
           if (current === "step3") {
-            this.previousEvent = "goBackToWaiting";
+            this.previousEvent = "goBackToStep1";
+          } else {
+            if (current === "goBackToStep2") {
+              this.previousEvent = "goBackToStep1";
+            } else {
+              if (current === "goBackToWaiting") {
+                this.previousEvent = "goBackToStep2";
+              } else {
+                if (current === "goBackToStep1") {
+                  this.previousEvent = "close";
+                } else {
+                  if (current === "") {
+                    this.previousEvent = "close";
+                  }
+                }
+              }
+            }
           }
         }
       }

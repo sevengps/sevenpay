@@ -7,16 +7,28 @@ $default: #e1e2e7;
 
 html,
 body {
-  background-color: pink;
+  background-color: #f2f4f8 !important;
   height: 100%;
   app-root {
     height: 100vh;
   }
 }
 
+// @media screen and (max-width: 490px) {
+//   html {
+//     font-size: 120%;
+//   }
+// }
+
 body {
   margin: 0;
   font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.dailog-container {
+  mat-dialog-container {
+    padding: 0px;
+  }
 }
 
 .appInputField-container {
@@ -75,8 +87,3 @@ $easy-light-theme: mat-light-theme(
 );
 
 @include angular-material-theme($easy-light-theme);
-
-/**
-for payment card
-clip-path: polygon(38% 14%, 100% 14%, 100% 100%, 14% 100%);
-*/

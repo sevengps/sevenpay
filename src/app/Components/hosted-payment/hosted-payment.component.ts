@@ -1,24 +1,7 @@
 import { PaymentsService } from "./../../Services/payments.service";
-import {
-  Component,
-  OnInit,
-  Output,
-  EventEmitter,
-  ViewChild,
-  ElementRef,
-  ChangeDetectorRef,
-  Input,
-} from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { MatSnackBar } from "@angular/material/snack-bar";
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-  FormControl,
-} from "@angular/forms";
-
-declare const Stripe; // : stripe.StripeStatic;
 
 @Component({
   selector: "app-hosted-payment",
@@ -28,6 +11,8 @@ declare const Stripe; // : stripe.StripeStatic;
 export class HostedPaymentComponent implements OnInit {
   constructor() {}
 
+  paymentHeader = "Selectionnez de votre mode de paiement";
+  paymentHeaderResponsive = "Mode de paiement";
   selectedGateway = "";
   currentState = "Continuer";
   currentFormState: any;
@@ -43,7 +28,7 @@ export class HostedPaymentComponent implements OnInit {
   sucessPayment = false;
   waiting = false;
   formState;
-
+  //OnInit lifecycle hook
   ngOnInit() {}
 
   getGateway(e) {
@@ -56,11 +41,27 @@ export class HostedPaymentComponent implements OnInit {
   }
   getNextEventFromButton(event) {
     this.nextActiveState = event;
+    if (event === "step2" || event === "goBackToStep2") {
+      this.paymentHeader = "Details de paiement";
+    } else {
+      if (event === "step2" || event === "goBackToStep2") {
+        this.paymentHeader = "Details de paiement";
+      } else {
+        if (event === "waiting" || event === "goBackToWaiting") {
+          this.paymentHeader = "Details de paiement";
+        } else {
+          if (event === "step3") {
+            this.paymentHeader = "Paiement Effectué";
+          }
+        }
+      }
+    }
   }
   gotoPreviousFormState(event) {
     this.previousActiveState = event;
-    console.log("this is the previous state  " + event);
   }
 
-  // getPreviousFormState(event) {}
+  getPreviousFormState(event) {
+    this.previousActiveState = event;
+  }
 }

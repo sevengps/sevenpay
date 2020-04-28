@@ -1,16 +1,22 @@
-<!-- <div class="companyHead">
-  <img src="assets/icons/Seven Pay logo small.png" alt="7 pay Logo" />
-  <p class="mat-h2">SevenPay Hosted Payment</p>
-</div> -->
-
 <div class="boder-bottom"></div>
 <div class="main-container">
   <div class="payment-container">
     <!-- head -->
+    <!-- <div class="container-head">
+      <mat-icon class="back" (click)="gotoPrevious()"
+        >keyboard_arrow_left</mat-icon
+      >
+      <span>{{ paymentHeader }}</span>
+      <mat-icon class="translate">g_translate</mat-icon>
+    </div> -->
+
     <app-head
-      (emitPreviousStateEvent)="gotoPreviousFormState($event)"
-      [formState]="formState"
+      (emitPreviousStateEvent)="getPreviousFormState($event)"
+      [formState]="currentFormState"
+      [paymentHeader]="paymentHeader"
+      [paymentHeaderResponsive]="paymentHeaderResponsive"
     ></app-head>
+
     <!-- body -->
     <app-payment-body
       (paymentMethod)="getGateway($event)"

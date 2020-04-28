@@ -20,7 +20,7 @@ import { StripeModalComponent } from "../../stripe-modal/stripe-modal.component"
 })
 export class PaymentBodyComponent implements OnInit, OnChanges {
   /**
-   * OUTPUT EVENTS
+   * OUTPUT EVENT EMITTERS
    */
   @Output() paymentMethod = new EventEmitter();
   @Output() emitCurrentState = new EventEmitter();
@@ -47,6 +47,10 @@ export class PaymentBodyComponent implements OnInit, OnChanges {
   connector2 = false;
   number1 = true;
   number2 = false;
+  number_1_Large = true;
+  number_2_Large = false;
+  number_3_Large = false;
+  readOnly = false;
   number3;
   momopayWaiting = false;
   visacardWaiting = false;
@@ -57,17 +61,16 @@ export class PaymentBodyComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges): void {
-    // console.log(changes.receiveNextActiveState.currentValue);
-    // console.log(changes.receivePreviousActiveState.currentValue);
-
     /**CHANGE DETECTOR FOR NEXT STEP EVENTS --- PAYMENT PROGRESSION */
     for (let propertyName in changes) {
       let change = changes[propertyName];
       let current = change.currentValue;
       let previous = change.previousValue;
 
-      console.log("current from body " + current);
-      console.log("previous from body " + previous);
+      // console.log("current from body " + current);
+      // console.log("previous from body " + previous);
+      // console.log("this is receivedprev " + this.receivePreviousActiveState);
+      // console.log(changes);
 
       if (current === "step1" || current === "goBackToStep1") {
         this.openStep1 = true;
@@ -79,26 +82,39 @@ export class PaymentBodyComponent implements OnInit, OnChanges {
         // this.emitPreviouState.emit(current);
       } else {
         if (current === "step2" || current === "goBackToStep2") {
-          if (this.selectedGateway === "visaCard") {
+          if (this.selectedGateway === "vissaCard") {
             this.openDialog(current);
+            this.openStep1 = true;
+            this.useStripe = false;
+            this.number2 = true;
+            this.connector1 = true;
+            this.openStep2 = false;
+            this.openStep3 = false;
+            this.visacardWaiting = false;
+            this.momopayWaiting = false;
+            this.emitCurrentState.emit(current);
+          } else {
+            this.openStep2 = true;
+            this.useStripe = false;
+            this.number2 = true;
+            this.connector1 = true;
+            this.number_1_Large = false;
+            this.number_2_Large = true;
+            this.openStep1 = false;
+            this.openStep3 = false;
+            this.visacardWaiting = false;
+            this.momopayWaiting = false;
+            this.emitCurrentState.emit(current);
+            // this.emitPreviouState.emit(current);
           }
-          this.openStep2 = true;
-          this.useStripe = false;
-          this.number2 = true;
-          this.connector1 = true;
-          this.openStep1 = false;
-          this.openStep3 = false;
-          this.visacardWaiting = false;
-          this.momopayWaiting = false;
-          this.emitCurrentState.emit(current);
-          // this.emitPreviouState.emit(current);
         } else {
           if (current === "waiting" || current === "goBackToWaiting") {
             this.visacardWaiting = true;
             this.momopayWaiting = true;
-            this.number2 = true;
+            this.visacardWaiting = true;
             this.openStep2 = true;
             this.connector1 = true;
+            this.readOnly = true;
             this.momopayWaiting = true;
             this.openStep3 = false;
             this.number3 = false;
@@ -111,6 +127,9 @@ export class PaymentBodyComponent implements OnInit, OnChanges {
               this.openStep3 = true;
               this.number3 = true;
               this.connector2 = true;
+              this.number_1_Large = false;
+              this.number_2_Large = false;
+              this.number_3_Large = true;
               this.openStep1 = false;
               this.openStep2 = false;
               this.visacardWaiting = false;
@@ -126,48 +145,6 @@ export class PaymentBodyComponent implements OnInit, OnChanges {
         }
       }
     }
-
-    // for (let propertyName in changes) {
-    //   let change = changes[propertyName];
-    //   let current = change.currentValue;
-    //   let previous = change.previousValue;
-
-    //   if (current === "goBackToStep1") {
-    //     this.openStep1 = true;
-    //     this.openStep2 = false;
-    //     this.openStep3 = false;
-    //     this.connector1 = false;
-    //     this.number2 = false;
-    //     this.emitCurrentState.emit(current);
-    //   } else {
-    //     if (current === "goBackToStep2") {
-    //       if (this.selectedGateway === "visaCard") {
-    //         this.openDialog(current);
-    //       }
-    //       this.openStep2 = true;
-    //       this.number2 = true;
-    //       this.connector1 = true;
-    //       this.openStep1 = false;
-    //       this.openStep3 = false;
-    //       this.visacardWaiting = false;
-    //       this.momopayWaiting = false;
-    //       this.emitCurrentState.emit(current);
-    //       // this.emitPreviouState.emit(current);
-    //     } else {
-    //       if (current === "goBackToWaiting") {
-    //         this.visacardWaiting = true;
-    //         this.momopayWaiting = true;
-    //         this.openStep3 = false;
-    //         this.number3 = false;
-    //         this.connector2 = false;
-    //         this.openStep1 = false;
-    //         this.openStep2 = false;
-    //         this.emitCurrentState.emit(current);
-    //         // this.emitPreviouState.emit(current);
-    //       }
-    //     }
-    //   }
-    // }
   }
 
   valueChanged(event) {
@@ -176,15 +153,16 @@ export class PaymentBodyComponent implements OnInit, OnChanges {
     this.paymentMethod.emit(this.selectedGateway);
   }
 
-  // MODAL THINGS
+  // MODAL
   animal: string;
   name: string;
 
   openDialog(current): void {
     const dialogRef = this.dialog.open(StripeModalComponent, {
-      width: "450px",
-      height: "470px",
+      width: "460px",
+      height: "530px",
       direction: "ltr",
+      panelClass: "dailog-container",
       data: { name: this.name, animal: this.animal },
       disableClose: true,
     });
@@ -195,7 +173,7 @@ export class PaymentBodyComponent implements OnInit, OnChanges {
         this.openStep1 = true;
         this.openStep2 = false;
         this.openStep3 = false;
-        this.connector1 = true;
+        this.connector1 = false;
         this.number2 = false;
         this.emitCurrentState.emit("step1");
       } else {
@@ -211,16 +189,13 @@ export class PaymentBodyComponent implements OnInit, OnChanges {
     });
   }
 
-  // Making momo payment
+  // momo payment
   momoPayment() {
     const customer = {
       amount: this.total,
       mobileNumber: this.mobileNumber,
     };
     this.loading = true;
-    // this.snackBar.open("Pocessing...Please Wait", "", {
-    //   duration: 2000,
-    // });
 
     let referenceId;
     let userApikey;

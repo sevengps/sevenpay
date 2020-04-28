@@ -1,19 +1,29 @@
 $secondary: #94b30d;
 $primary: #0767b1;
 $default: #ffffff;
+$cardElementBackground: #edeeeb;
 @import url("https://fonts.googleapis.com/css2?family=Rubik&family=Source+Sans+Pro:wght@400;600&display=swap");
 
 .payment-container {
   margin: 0 auto;
-
+  width: 93%;
+  background-color: #ffffff;
+  margin-top: -7rem;
+  margin-left: 3rem;
+  border-radius: 6px;
+  margin-bottom: -4.5rem;
   .header-container {
-    background-color: $primary;
-    padding: 0.5rem;
     .header {
       font-family: "Source Sans Pro", sans-serif;
       font-weight: bolder;
       color: $default;
       margin: -0.5rem 0rem 0rem 3.5rem;
+    }
+    img {
+      margin-left: 28%;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      width: 20%;
     }
   }
 }
@@ -22,30 +32,93 @@ $default: #ffffff;
   display: flex;
   flex-direction: column;
   justify-content: space-around;
+  padding: 1rem;
 }
 
 .card-elements {
-  background-color: $secondary;
+  display: flex;
+  margin-top: -1.5rem;
 }
-.cardNumber {
-  margin: 1.5rem 0.5rem 0rem 0.5rem;
-  background-color: $default;
-  padding: 0.5rem;
-  border-radius: 1rem;
+.card-names {
+  display: flex;
+  justify-content: space-around;
+  margin-top: -1.5rem;
+  margin-bottom: -0.5rem;
+  .name-cardNumber {
+    margin-left: -3.9rem;
+    font-weight: 590;
+    font-size: 0.89rem;
+  }
+
+  .name-CVC {
+    font-weight: 590;
+    font-size: 0.89rem;
+  }
 }
 
-.cardExp {
-  margin: 1.5rem 0.5rem 0rem 0.5rem;
-  background-color: $default;
-  padding: 0.5rem;
-  border-radius: 1rem;
+.cardNumber {
+  margin: 2.5rem 0.5rem 0rem 1rem;
+  background-color: $cardElementBackground;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  width: 60%;
 }
 
 .cardCvc {
-  margin: 1.5rem 0.5rem 1rem 0.5rem;
-  background-color: $default;
-  padding: 0.5rem;
-  border-radius: 1rem;
+  margin: 2.5rem 1.5rem 0rem 0.5rem;
+  background-color: $cardElementBackground;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  width: 19%;
+}
+
+.name-cardHolder {
+  margin: 1rem 0.5rem 0.5rem 1rem;
+  font-size: 0.89rem;
+  font-weight: 590;
+}
+.cardHolder {
+  background-color: $cardElementBackground;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  margin-left: 1rem;
+  width: 83%;
+}
+
+.name-cardExpiry {
+  margin: 1rem 0.5rem 0.5rem 1rem;
+  font-size: 0.89rem;
+  font-weight: 590;
+}
+.cardExp {
+  background-color: $cardElementBackground;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  margin-left: 1rem;
+  width: 83%;
+}
+
+.paymentBtn {
+  margin-top: -1rem;
+  background-color: $primary;
+  color: $default;
+  margin: 0 auto;
+  padding: 0.23rem;
+  width: 91%;
+}
+
+.cancelBtn {
+  margin: 0 auto;
+  margin-top: 0.3rem;
+  background-color: $secondary;
+  color: $default;
+  padding: 0.23rem;
+  width: 91%;
+}
+
+.loading {
+  margin: 0 auto;
+  opacity: 0.3;
 }
 
 .cardErrors {
@@ -54,19 +127,7 @@ $default: #ffffff;
   padding: 1rem;
   margin: 0rem 0rem 0.5rem 0rem;
 }
-.paymentBtn {
-  margin-top: -1rem;
-  background-color: $primary;
-  color: $default;
-  margin-bottom: 1.5rem;
-}
-
-.loading {
-  margin: 0 auto;
-  opacity: 0.3;
-}
-
-.payment-sucess {
+.payment-success {
   color: green;
   font-size: 1rem;
   padding: 1rem;

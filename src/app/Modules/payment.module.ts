@@ -28,7 +28,7 @@ const paymentComponents = [
     SuccessTransactionComponent,
     StripeModalComponent,
   ],
-  entryComponents: [StripeModalComponent],
+  // entryComponents: [StripeModalComponent],
   imports: [CommonModule, MaterialModule, FormsModule],
   exports: [paymentComponents],
 })

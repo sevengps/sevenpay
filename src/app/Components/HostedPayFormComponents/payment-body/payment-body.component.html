@@ -6,21 +6,36 @@
       [ngClass]="{ fixSuccessStepper: openStep3 }"
     >
       <div class="stepper-head">
-        <span class="step-number" [ngClass]="{ number1: number1 }">1</span>
+        <span
+          class="step-number-1"
+          [ngClass]="{
+            number1: number1,
+            'number-large': number_1_Large
+          }"
+        >
+        </span>
         <span
           class="step-connector connector1"
           [ngClass]="{ connector1: connector1 }"
         ></span>
-        <span class="step-number number2" [ngClass]="{ number2: number2 }"
-          >2</span
-        >
+        <span
+          class="step-number-2 number2"
+          [ngClass]="{
+            number2: number2,
+            'number-large': number_2_Large
+          }"
+        ></span>
         <span
           class="step-connector connector2"
           [ngClass]="{ connector2: connector2 }"
         ></span>
-        <span class="step-number number3" [ngClass]="{ number3: number3 }"
-          >3</span
-        >
+        <span
+          class="step-number-3 number3"
+          [ngClass]="{
+            number3: number3,
+            'number-large': number_3_Large
+          }"
+        ></span>
       </div>
     </div>
 
@@ -127,7 +142,13 @@
       <form *ngIf="selectedGateway === 'mobileMoney'">
         <mat-form-field [ngClass]="{ 'momopay-waiting': momopayWaiting }">
           <mat-label>Entrez le numéro de téléphone</mat-label>
-          <input matInput type="text" />
+          <input
+            matInput
+            type="number"
+            [readonly]="readOnly"
+            onkeydown="javascript: return event.keyCode === 8 ||
+event.keyCode === 46 ? true : !isNaN(Number(event.key))"
+          />
         </mat-form-field>
 
         <span
@@ -146,7 +167,7 @@
           [ngClass]="{ 'visaCardPay-waiting': visacardWaiting }"
           *ngIf="!useStripe"
         >
-          <mat-form-field class="cardOwner">
+          <!-- <mat-form-field class="cardOwner">
             <mat-label>Nom Sur la Carte</mat-label>
             <input matInput type="text" placeholder="Kambang Sinclaire" />
           </mat-form-field>
@@ -157,7 +178,6 @@
           </mat-form-field>
 
           <div class="card-expiration-cvc-container">
-            <!-- card expiration -->
             <mat-form-field class="expiration">
               <mat-label>Expiration</mat-label>
               <input matInput [matDatepicker]="picker" />
@@ -167,19 +187,20 @@
               <mat-datepicker #picker></mat-datepicker>
             </mat-form-field>
             <span class="form-spacer"></span>
-            <!-- card cvc -->
             <mat-form-field class="cvc">
               <mat-label>Cvc</mat-label>
               <input matInput type="text" placeholder=". . ." />
             </mat-form-field>
-          </div>
+          </div> -->
+
+          <app-stripe-modal></app-stripe-modal>
         </div>
 
-        <span
+        <!-- <span
           >Vos informations personnelles ne seront utilisées à d'autres fins,
           vous pouvez lire notre
           <a href="#">politique de confidentialité</a>
-        </span>
+        </span> -->
       </form>
     </div>
 
