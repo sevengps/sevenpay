@@ -12,6 +12,12 @@ $default: #e1e2e7;
 .table-name {
   margin-bottom: 0rem;
 }
+mat-toolbar {
+  justify-content: space-between;
+  img {
+    height: 70%;
+  }
+}
 
 .underline-header {
   height: 2px;

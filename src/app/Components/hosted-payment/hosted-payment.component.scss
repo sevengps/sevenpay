@@ -13,10 +13,16 @@ $default: #ffffff;
 .option {
   display: flex;
 }
-
+.companyHead {
+  margin-bottom: -0.08rem;
+}
+.mat-h2 {
+  color: $primary;
+}
 .main-container {
   background: #f2f4f8;
   opacity: 1;
+  margin-top: 7.5%;
 }
 
 // .container-head {
@@ -69,14 +75,14 @@ $default: #ffffff;
 }
 
 .creditCard-Container {
-  margin-top: 5rem;
+  margin-top: 6rem;
   margin-left: -1rem;
   position: absolute;
   z-index: 1;
 
   img {
     height: 28%;
-    width: 58%;
+    width: 77%;
     z-index: 99;
   }
 }
