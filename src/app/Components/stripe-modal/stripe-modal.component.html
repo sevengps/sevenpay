@@ -1,7 +1,6 @@
 <!-- STRIPE THINGS HERE -->
 <div class="payment-container" [ngClass]="{ loading: loading }">
   <div class="header-container">
-    <!-- <h2 class="header" mat-dialog-title>SevenPay &nbsp; Card Payment</h2> -->
     <img src="assets/icons/visaCard.png" alt="" />
   </div>
   <mat-dialog-content>
@@ -29,6 +28,7 @@
           id=""
           class="cardHolder"
           placeholder="Akah Larry"
+          (keydown)="triggerPayment($event)"
         />
       </div>
 
@@ -47,18 +47,17 @@
       >
         {{ cardErrorOrPaymentSuccess }}
       </p>
-
-      <!-- <button
-        mat-raised-button
-        class="paymentBtn"
-        (click)="makePayment($event)"
-      >
-        COMPLETE PAYMENT ( TOTAL ${{ total / 500 }} )
-      </button> -->
-      <!-- <button mat-raised-button (click)="closeModal()" class="cancelBtn">
-        Cancel
-      </button> -->
     </form>
   </mat-dialog-content>
 </div>
 <!-- END OF STRIPE -->
+<div class="payment-button">
+  <button mat-raised-button class="card-btn next">
+    <!-- <span *ngIf="buttonState != 'Loading'">{{ buttonState }}</span> -->
+    <mat-progress-spinner
+      [diameter]="35"
+      mode="indeterminate"
+      color="warn"
+    ></mat-progress-spinner>
+  </button>
+</div>

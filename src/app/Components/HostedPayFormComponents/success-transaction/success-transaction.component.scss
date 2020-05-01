@@ -1,16 +1,258 @@
 $secondary: #94b30d;
 $primary: #0767b1;
 $default: #ffffff;
+$connectors: #bfbfbf;
 @import url("https://fonts.googleapis.com/css2?family=Rubik&family=Source+Sans+Pro:wght@400;600&display=swap");
 
-// attach for step3
+.transaction-container {
+  position: absolute;
+  bottom: 0;
+  right: -1px;
+  width: 100%;
+  height: 85%;
+  background-color: #ffffff;
+  opacity: 1;
+  -webkit-clip-path: polygon(35% 0, 100% 0%, 100% 100%, 15% 100%);
+  clip-path: polygon(35% 0, 100% 0%, 100% 100%, 15% 100%);
+}
+
+.elements-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  margin-left: 10rem;
+  position: relative;
+  top: -24px;
+}
+
+// .transaction-container-cliped {
+//   clip-path: polygon(42% -2%, 100% 0%, 100% 102%, 15% 89%);
+// }
+
 .stepper-container {
-  width: 65%;
-  margin-bottom: -5rem;
+  width: 86%;
+  margin-top: -0.6rem;
+  margin-right: -9rem;
+  margin-bottom: 246px;
+}
+.stepper-head {
+  width: 70%;
+  margin-left: 6rem;
+  display: flex;
+  justify-content: space-between;
+
+  .step-number {
+    padding: 0.5rem;
+    border-radius: 60%;
+    background-color: rgb(194, 187, 187);
+    color: $default;
+    margin-top: -1rem;
+    font-weight: bold;
+  }
+
+  .step-number-1 {
+    color: $default !important;
+    background-color: unset !important;
+    padding: 0 !important;
+  }
+  .step-number-1::before {
+    content: "1";
+    height: 24px;
+    width: 24px;
+    background-color: #bfbfbf;
+    border-radius: 100%;
+    position: relative;
+    left: 0px;
+    top: -12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+  }
+
+  .step-number-2::before {
+    content: "2";
+    height: 24px;
+    width: 24px;
+    background-color: #bfbfbf;
+    border-radius: 100%;
+    position: relative;
+    left: 0px;
+    top: -12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+  }
+
+  .step-number-3::before {
+    content: "3";
+    height: 24px;
+    width: 24px;
+    background-color: #bfbfbf;
+    border-radius: 100%;
+    position: relative;
+    left: 0px;
+    top: -12px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+  }
+
+  // Step numbers
+  .number1::before {
+    background-color: $primary;
+  }
+  .number2::before {
+    background-color: $primary;
+  }
+  .number3::before {
+    background-color: $primary;
+  }
+
+  .number-large::before {
+    height: 31px;
+    width: 31px;
+    top: -15px;
+  }
+  .number-normal {
+    height: 26px;
+    width: 26px;
+    top: -12px;
+  }
+
+  // Step connectors
+  .step-connector {
+    width: 11rem;
+    height: 4px;
+    background-color: #b1aaaa;
+    position: relative;
+    top: -1px;
+  }
+  .connector1 {
+    background-color: $primary;
+  }
+  .connector2 {
+    background-color: $primary;
+  }
+}
+
+/* STEP 2*/
+.momoPay {
+  width: 29rem;
+  margin-top: -0.3rem;
+  margin-left: 1rem;
+  form {
+    width: 100%;
+    margin-bottom: 7rem;
+    margin-left: -1rem;
+    margin-top: -3rem;
+    mat-form-field {
+      width: 100%;
+    }
+    span {
+      width: 95%;
+    }
+  }
+}
+
+.showStripeCard {
+  display: none;
+}
+
+// fix stepper when visa card is selected
+.fixStepper {
+  margin-top: 0rem;
+}
+
+.fixSuccessStepper {
+  margin-top: 3rem;
+}
+
+/** FIXED CARD ELEMENTS*/
+.fixCardElements {
+  margin-left: 4rem;
+  .payment-card {
+    margin-bottom: -4rem;
+    margin-top: -4rem;
+  }
+  .card-expiration-cvc-container mat-form-field {
+    width: 46%;
+    margin-bottom: 1rem;
+  }
+  .form-spacer {
+    margin-right: 2.3rem;
+  }
+
+  .cardOwner {
+    margin-bottom: 1.5rem;
+  }
+
+  .cardNumber {
+    margin-bottom: 1.5rem;
+  }
+}
+
+// attach for step3
+.fixStepperForStep3 {
+  margin-top: 5rem;
 }
 .successful-payment {
-  margin-bottom: 2rem;
-  margin-top: -8rem;
+  span {
+    strong,
+    small {
+      color: $primary;
+      font-family: "Source Sans Pro", sans-serif;
+    }
+    small {
+      font-size: 1.2rem;
+    }
+    strong {
+      font-size: 2rem;
+    }
+  }
+  p.payment-date {
+    margin-left: 3rem;
+  }
+  p.payment-id {
+    margin-left: 5.5rem;
+    margin-bottom: 2rem;
+    span {
+      font-size: 1.3rem;
+      font-family: "Source Sans Pro", sans-serif;
+    }
+  }
+}
+
+.payment-button {
+  // display: none;
+  width: 28rem;
+  position: absolute;
+  bottom: -25px;
+  right: 5%;
+  .card-btn {
+    background-color: $secondary;
+    height: 3rem;
+    width: 100%;
+    color: $default;
+
+    mat-progress-spinner {
+      margin: 0 auto;
+      color: $default;
+    }
+  }
+}
+
+.successful-payment {
+  margin-bottom: 0rem;
+  margin-top: -23rem;
+  margin-left: 9rem;
   font-family: "Source Sans Pro", sans-serif;
   color: #636363;
   span {
@@ -40,8 +282,8 @@ $default: #ffffff;
 }
 
 .successIcon {
-  width: 25%;
-  height: 29%;
+  width: 29%;
+  height: 39%;
   border-radius: 50%;
-  margin-left: 11.5rem;
+  margin-left: 9.5rem;
 }

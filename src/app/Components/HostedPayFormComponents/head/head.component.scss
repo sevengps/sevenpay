@@ -13,14 +13,14 @@ $default: #ffffff;
   align-items: center;
 
   span {
-    margin-top: 1.5rem;
+    margin-top: 0.4rem;
     font-size: 1.5rem;
     font-family: "Rubik", sans-serif;
   }
   mat-icon.back {
     font-size: 3.8rem;
-    margin-left: -4rem;
-    margin-top: -0.6rem;
+    margin-left: -2rem;
+    margin-top: -1.6rem;
     cursor: pointer;
   }
 
@@ -35,12 +35,75 @@ $default: #ffffff;
   display: none;
 }
 
-#english {
-  background-image: url("../../../../assets/icons/engFlag.png");
+select {
+  width: 70px;
+  height: 20px;
 }
-#french {
-  background-image: url("../../../../assets/icons/frenchFlag.png");
+
+.language-container-english {
+  background-color: white;
+  padding: 3px;
+  margin-top: 1rem;
+
+  img {
+    margin-bottom: -5px;
+    height: 13.5px;
+    width: 20px;
+    padding: 3px;
+  }
+
+  select {
+    border: none;
+    background: white;
+  }
 }
+
+.language-container-french {
+  display: none;
+  margin-top: 1rem;
+  margin-bottom: -56px;
+  margin-left: -13.1rem;
+  background-color: $default;
+  padding: 3px;
+  img {
+    margin-bottom: -5px;
+    height: 13.5px;
+    width: 20px;
+    padding: 3px;
+  }
+
+  select {
+    border: none;
+    background: white;
+  }
+}
+
+.language-container-english,
+select,
+option:hover {
+  cursor: pointer;
+}
+
+.language-container-french,
+select,
+option:hover {
+  cursor: pointer;
+}
+
+.showElement {
+  display: inline-block;
+}
+
+.hideBackBtn {
+  display: none;
+}
+
+.completePayment {
+}
+.modePayment {
+  margin-left: -3rem;
+}
+
 // @media screen and (max-width: 490px) {
 //   .responsive {
 //     display: inline;

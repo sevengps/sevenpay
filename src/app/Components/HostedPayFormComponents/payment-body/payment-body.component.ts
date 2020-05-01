@@ -1,5 +1,5 @@
 import { PaymentsService } from "./../../../Services/payments.service";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 
 import {
   Component,
@@ -18,7 +18,7 @@ import { StripeModalComponent } from "../../stripe-modal/stripe-modal.component"
   templateUrl: "./payment-body.component.html",
   styleUrls: ["./payment-body.component.scss"],
 })
-export class PaymentBodyComponent implements OnInit, OnChanges {
+export class PaymentBodyComponent implements OnInit {
   /**
    * OUTPUT EVENT EMITTERS
    */
@@ -27,9 +27,12 @@ export class PaymentBodyComponent implements OnInit, OnChanges {
   @Output() emitPreviouState = new EventEmitter();
   @Input() receiveNextActiveState;
   @Input() receivePreviousActiveState;
+  currentUrl: string;
+  buttonState: string = "Continuer";
 
   constructor(
     private router: Router,
+    private route: ActivatedRoute,
     public dialog: MatDialog,
     private paymentService: PaymentsService
   ) {}
@@ -54,206 +57,116 @@ export class PaymentBodyComponent implements OnInit, OnChanges {
   number3;
   momopayWaiting = false;
   visacardWaiting = false;
+  activeUrl = "";
+  adjustContainer = false;
+  hideButton = false;
 
   ngOnInit() {
     this.emitCurrentState.emit(this.selectedGateway);
     this.paymentMethod.emit(this.selectedGateway);
+    console.log(this.router.url);
+    this.route.paramMap.subscribe((url) => {
+      console.log(url);
+    });
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    /**CHANGE DETECTOR FOR NEXT STEP EVENTS --- PAYMENT PROGRESSION */
-    for (let propertyName in changes) {
-      let change = changes[propertyName];
-      let current = change.currentValue;
-      let previous = change.previousValue;
+  getActivatedRoute(event) {
+    console.log(event);
+    if (
+      (event.selectedGateway != undefined &&
+        event.selectedGateway === "mobileMoney") ||
+      event.selectedGateway === "visaCard"
+    ) {
+      this.paymentMethod.emit(event.selectedGateway);
+    }
 
-      // console.log("current from body " + current);
-      // console.log("previous from body " + previous);
-      // console.log("this is receivedprev " + this.receivePreviousActiveState);
-      // console.log(changes);
+    if (event.openStep2 != undefined || event.waiting != undefined) {
+      this.openStep2 = true;
+      this.connector1 = true;
+      this.number_2_Large = true;
+      this.number_1_Large = false;
+      this.number2 = true;
+    } else {
+      this.number_2_Large = false;
+      this.number2 = false;
+      this.connector1 = false;
+      this.number3 = false;
+      this.openStep3 = false;
+      this.number_3_Large = false;
+      this.connector2 = false;
+    }
 
-      if (current === "step1" || current === "goBackToStep1") {
-        this.openStep1 = true;
-        this.openStep2 = false;
-        this.openStep3 = false;
-        this.connector1 = false;
-        this.number2 = false;
-        this.emitCurrentState.emit(current);
-        // this.emitPreviouState.emit(current);
-      } else {
-        if (current === "step2" || current === "goBackToStep2") {
-          if (this.selectedGateway === "vissaCard") {
-            this.openDialog(current);
-            this.openStep1 = true;
-            this.useStripe = false;
-            this.number2 = true;
-            this.connector1 = true;
-            this.openStep2 = false;
-            this.openStep3 = false;
-            this.visacardWaiting = false;
-            this.momopayWaiting = false;
-            this.emitCurrentState.emit(current);
-          } else {
-            this.openStep2 = true;
-            this.useStripe = false;
-            this.number2 = true;
-            this.connector1 = true;
-            this.number_1_Large = false;
-            this.number_2_Large = true;
-            this.openStep1 = false;
-            this.openStep3 = false;
-            this.visacardWaiting = false;
-            this.momopayWaiting = false;
-            this.emitCurrentState.emit(current);
-            // this.emitPreviouState.emit(current);
-          }
-        } else {
-          if (current === "waiting" || current === "goBackToWaiting") {
-            this.visacardWaiting = true;
-            this.momopayWaiting = true;
-            this.visacardWaiting = true;
-            this.openStep2 = true;
-            this.connector1 = true;
-            this.readOnly = true;
-            this.momopayWaiting = true;
-            this.openStep3 = false;
-            this.number3 = false;
-            this.connector2 = false;
-            this.openStep1 = false;
-            this.emitCurrentState.emit(current);
-            // this.emitPreviouState.emit(current);
-          } else {
-            if (current === "step3") {
-              this.openStep3 = true;
-              this.number3 = true;
-              this.connector2 = true;
-              this.number_1_Large = false;
-              this.number_2_Large = false;
-              this.number_3_Large = true;
-              this.openStep1 = false;
-              this.openStep2 = false;
-              this.visacardWaiting = false;
-              this.momopayWaiting = false;
-              this.emitCurrentState.emit(current);
-              // this.emitPreviouState.emit(current);
-            } else {
-              if (current === "close") {
-                this.router.navigate([""]);
-              }
-            }
-          }
-        }
-      }
+    if (event.openStep3 != undefined) {
+      this.openStep3 = true;
+      this.connector1 = true;
+      this.connector2 = true;
+      this.number2 = true;
+      this.number_2_Large = false;
+      this.number_1_Large = false;
+      this.number_3_Large = true;
+      this.number3 = true;
+    }
+
+    if (event.currentRoute != undefined && event.currentRoute === "momopay") {
+      this.adjustContainer = true;
+    } else {
+      this.adjustContainer = false;
     }
   }
 
-  valueChanged(event) {
-    console.log(event.value);
-    this.selectedGateway = event.value;
-    this.paymentMethod.emit(this.selectedGateway);
+  selectionChange(eevent) {
+    console.log(eevent);
   }
 
-  // MODAL
-  animal: string;
-  name: string;
+  next() {
+    this.currentUrl = this.router.url;
+    let gateway = localStorage.getItem("url");
+    if (gateway != null) {
+      this.currentUrl = `${this.currentUrl}/${gateway}`;
+      localStorage.removeItem("url");
+    }
 
-  openDialog(current): void {
-    const dialogRef = this.dialog.open(StripeModalComponent, {
-      width: "460px",
-      height: "530px",
-      direction: "ltr",
-      panelClass: "dailog-container",
-      data: { name: this.name, animal: this.animal },
-      disableClose: true,
-    });
+    console.log(this.currentUrl);
 
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(result);
-      if (result === "cancelled") {
-        this.openStep1 = true;
-        this.openStep2 = false;
-        this.openStep3 = false;
-        this.connector1 = false;
-        this.number2 = false;
-        this.emitCurrentState.emit("step1");
-      } else {
-        this.openStep3 = true;
-        this.number3 = true;
-        this.connector2 = true;
-        this.openStep1 = false;
-        this.openStep2 = false;
-        this.visacardWaiting = false;
-        this.momopayWaiting = false;
-        this.emitCurrentState.emit("step3");
-      }
-    });
+    if (this.currentUrl === "/hostedPayment/payments") {
+      this.router.navigate(["hostedPayment/payments/momopay"]);
+      this.hideButton = true;
+    }
+
+    if (this.currentUrl === "/hostedPayment/payments/mobileMoney") {
+      this.router.navigate(["hostedPayment/payments/momopay"]);
+      this.hideButton = true;
+    }
+
+    if (this.currentUrl === "/hostedPayment/payments/momopay") {
+      this.router.navigate(["hostedPayment/payments/momopay", "processing"]);
+      this.hideButton = false;
+      this.buttonState = "Loading";
+    }
+
+    if (this.currentUrl === "/hostedPayment/payments/momopay/processing") {
+      this.router.navigate(["hostedPayment/payments/success"]);
+      this.buttonState = "Continuer";
+    }
+
+    if (this.currentUrl === "/hostedPayment/payments/visaCard") {
+      this.router.navigate(["hostedPayment/payments/visapay"]);
+      this.buttonState = "Paiement";
+    }
+
+    if (this.currentUrl === "/hostedPayment/payments/visapay") {
+      this.router.navigate(["hostedPayment/payments/visapay", "processing"]);
+      this.buttonState = "Loading";
+    }
+
+    if (this.currentUrl === "/hostedPayment/payments/visapay/processing") {
+      this.router.navigate(["hostedPayment/payments/success"]);
+      this.buttonState = "Continuer";
+    }
+
+    if (this.currentUrl === "/hostedPayment/payments/success") {
+      this.buttonState = "Continuer";
+      this.router.navigate([""]);
+    }
   }
-
-  // momo payment
-  momoPayment() {
-    const customer = {
-      amount: this.total,
-      mobileNumber: this.mobileNumber,
-    };
-    this.loading = true;
-
-    let referenceId;
-    let userApikey;
-    let userToken;
-    let errorLog;
-
-    this.paymentService.createApiUser().subscribe((user) => {
-      referenceId = user.data.reference;
-      console.log(referenceId);
-
-      if (referenceId) {
-        this.paymentService.createApiKey(referenceId).subscribe((apikey) => {
-          userApikey = apikey.apiKey;
-          console.log(userApikey);
-          if (userApikey) {
-            this.paymentService
-              .createUserToken(referenceId, userApikey)
-              .subscribe((authtoken) => {
-                userToken = authtoken.data.access_token;
-                console.log(userToken);
-                if (userToken) {
-                  this.paymentService
-                    .makeMomoPayment(customer, userToken, referenceId)
-                    .subscribe(
-                      (payments) => {
-                        console.log(payments);
-                      },
-                      (error) => {
-                        errorLog = error.error.data;
-                        console.log(errorLog);
-                        if (errorLog === null) {
-                          this.paymentService
-                            .getTransactionDetails(userToken, referenceId)
-                            .subscribe((transaction) => {
-                              console.log(transaction);
-                              if (transaction) {
-                                this.paymentService
-                                  .getUserBalance(userToken)
-                                  .subscribe((accountBalance) => {
-                                    console.log(accountBalance);
-                                  });
-                              }
-                            });
-                        }
-                      }
-                    );
-                } else {
-                  //no token generated
-                }
-              });
-          } else {
-            // user apikey could not be created
-          }
-        });
-      } else {
-        //no reference id returned. user not created
-      }
-    });
-  }
-  //Momo Payment ends here
 }

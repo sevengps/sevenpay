@@ -3,7 +3,7 @@
     <div class="elements-container">
       <div
         class="stepper-container"
-        [ngClass]="{ fixStepper: selectedGateway === 'visaCard' && openStep3 }"
+        [ngClass]="{ fixStepper: selectedGateway === 'visaCard' && openStep2 }"
         [ngClass]="{ fixSuccessStepper: openStep3 }"
       >
         <div class="stepper-head">
@@ -39,27 +39,35 @@
           ></span>
         </div>
       </div>
-      <div class="successful-payment" *ngIf="successPayment">
-        <span>
-          Votre paiement de <strong>{{ total }} </strong><small>XAF</small> a
-          &eacute;t&eacute; bien effectu&eacute;
-        </span>
-        <p class="payment-date">Date de paiement : {{ transDate }}</p>
-        <p class="payment-id">
-          Transaction <span class="id">{{ transId }}</span>
-        </p>
-        <img
-          mat-card-image
-          class="successIcon"
-          src="assets/icons/tick.svg"
-          alt=""
-        />
+      <div class="momoPay momopay-waiting">
+        <form>
+          <mat-form-field class="momoPaymentForm">
+            <mat-label>Entrez le numéro de téléphone</mat-label>
+            <input
+              matInput
+              type="number"
+              readonly
+              onkeydown="javascript: return event.keyCode === 8 ||
+        event.keyCode === 46 ? true : !isNaN(Number(event.key))"
+            />
+          </mat-form-field>
+
+          <span
+            >Vos informations personnelles ne seront utilisées à d'autres fins,
+            vous pouvez lire notre
+            <a href="#">politique de confidentialité</a>
+          </span>
+        </form>
       </div>
     </div>
   </div>
   <div class="payment-button">
     <button mat-raised-button class="card-btn next" (click)="next()">
-      {{ buttonState }}
+      <mat-progress-spinner
+        [diameter]="35"
+        mode="indeterminate"
+        color="warn"
+      ></mat-progress-spinner>
     </button>
   </div>
 </div>

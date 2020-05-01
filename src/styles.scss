@@ -1,9 +1,10 @@
 /* You can add global styles to this file, and also import other style files */
 @import "@angular/material/prebuilt-themes/pink-bluegrey.css";
 
-$secondary: #96b30d;
+$secondary: #94b30d;
 $primary: #0767b1;
-$default: #e1e2e7;
+$default: #ffffff;
+@import url("https://fonts.googleapis.com/css2?family=Rubik&family=Source+Sans+Pro:wght@400;600&display=swap");
 
 html,
 body {
@@ -22,7 +23,7 @@ body {
 
 body {
   margin: 0;
-  font-family: Roboto, "Helvetica Neue", sans-serif;
+  font-family: "Rubik", sans-serif;
 }
 
 .dailog-container {

@@ -1,0 +1,109 @@
+<div class="">
+  <div class="transaction-container">
+    <div class="elements-container">
+      <div
+        class="stepper-container"
+        [ngClass]="{ fixStepper: selectedGateway === 'visaCard' && openStep2 }"
+        [ngClass]="{ fixSuccessStepper: openStep3 }"
+      >
+        <div class="stepper-head">
+          <span
+            class="step-number-1"
+            [ngClass]="{
+              number1: number1,
+              'number-large': number_1_Large
+            }"
+          >
+          </span>
+          <span
+            class="step-connector connector1"
+            [ngClass]="{ connector1: connector1 }"
+          ></span>
+          <span
+            class="step-number-2 number2"
+            [ngClass]="{
+              number2: number2,
+              'number-large': number_2_Large
+            }"
+          ></span>
+          <span
+            class="step-connector connector2"
+            [ngClass]="{ connector2: connector2 }"
+          ></span>
+          <span
+            class="step-number-3 number3"
+            [ngClass]="{
+              number3: number3,
+              'number-large': number_3_Large
+            }"
+          ></span>
+        </div>
+      </div>
+      <div class="momoPay">
+        <form>
+          <!-- STRIPE THINGS HERE -->
+          <div class="payment-container" [ngClass]="{ loading: loading }">
+            <div class="header-container">
+              <img src="assets/icons/visaCard.png" alt="" />
+            </div>
+            <mat-dialog-content>
+              <form class="stripeContainer">
+                <div class="card-names">
+                  <span class="name-cardNumber">CARD NUMBER</span>
+                  <span class="name-CVC">CVC</span>
+                </div>
+                <div class="card-elements">
+                  <div class="cardNumber">
+                    <div #cardNumber></div>
+                  </div>
+
+                  <div class="cardCvc">
+                    <div #cardCvc></div>
+                  </div>
+                </div>
+
+                <span class="name-cardHolder">CARD HOLDER NAME</span>
+                <div class="card-holder-name">
+                  <input
+                    matInput
+                    type="text"
+                    name=""
+                    id=""
+                    class="cardHolder"
+                    placeholder="Akah Larry"
+                    (keydown)="triggerPayment($event)"
+                  />
+                </div>
+
+                <span class="name-cardExpiry">EXPERITION DATE</span>
+                <div class="cardExp">
+                  <div #cardExpiry></div>
+                </div>
+
+                <div *ngIf="pocessing" [ngClass]="{ loading: loading }">
+                  <mat-spinner [diameter]="50"></mat-spinner>
+                </div>
+
+                <p
+                  class="cardErrors"
+                  [ngClass]="{
+                    cardErrors: cardError,
+                    'payment-success': paymentSuccess
+                  }"
+                >
+                  {{ cardErrorOrPaymentSuccess }}
+                </p>
+              </form>
+            </mat-dialog-content>
+          </div>
+          <!-- END OF STRIPE -->
+        </form>
+      </div>
+    </div>
+  </div>
+  <div class="payment-button">
+    <button mat-raised-button class="card-btn next" (click)="next()">
+      <span>{{ buttonState }}</span>
+    </button>
+  </div>
+</div>

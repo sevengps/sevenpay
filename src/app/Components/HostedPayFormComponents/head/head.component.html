@@ -1,10 +1,26 @@
 <div class="container-head">
-  <mat-icon class="back" (click)="gotoPrevious()">keyboard_arrow_left</mat-icon>
+  <mat-icon
+    class="back"
+    (click)="gotoPrevious()"
+    [ngClass]="{
+      hideBackBtn: hideBackBtn,
+      modePayment: true,
+      completePayment: true
+    }"
+    >keyboard_arrow_left</mat-icon
+  >
   <span class="Not-responsive">{{ paymentHeader }}</span>
   <span class="responsive">{{ paymentHeaderResponsive }}</span>
-  <!-- <mat-icon class="translate">g_translate</mat-icon> -->
-  <select name="selectLanguage" id="language">
-    <option id="english" value="ENG"> ENG</option>
-    <option id="french" value="FR"> FR</option>
-  </select>
+  <div class="language-container-english" (mouseover)="showFrenchOption()">
+    <img src="assets/icons/engFlag.png" alt="flag" />
+    <select id="language" disabled>
+      <option>EN</option>
+    </select>
+  </div>
+  <div class="language-container-french">
+    <img src="assets/icons/frenchFlag.png" alt="flag" />
+    <select id="language" disabled>
+      <option>FR</option>
+    </select>
+  </div>
 </div>

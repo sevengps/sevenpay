@@ -1,25 +1,18 @@
-import { PaymentsService } from "./../../Services/payments.service";
-import {
-  Component,
-  OnInit,
-  Inject,
-  ViewChild,
-  ElementRef,
-} from "@angular/core";
-import { MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
-
-declare const Stripe; // : stripe.StripeStatic;
-
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { PaymentsService } from "src/app/Services/payments.service";
+import { Router } from "@angular/router";
+declare const Stripe;
 @Component({
-  selector: "app-stripe-modal",
-  templateUrl: "./stripe-modal.component.html",
-  styleUrls: ["./stripe-modal.component.scss"],
+  selector: "app-visa-pay",
+  templateUrl: "./visa-pay.component.html",
+  styleUrls: ["./visa-pay.component.scss"],
 })
-export class StripeModalComponent implements OnInit {
+export class VisaPayComponent implements OnInit {
+  currentUrl: any;
+
   constructor(
-    // public dialogRef: MatDialogRef<StripeModalComponent>,
-    // @Inject(MAT_DIALOG_DATA) public data: DialogData,
-    private paymentService: PaymentsService
+    private paymentService: PaymentsService,
+    private router: Router
   ) {}
 
   @ViewChild("cardElement") cardElement: ElementRef;
@@ -34,13 +27,31 @@ export class StripeModalComponent implements OnInit {
   cardNumber: any;
   cardExpiry: any;
   cardCvc: any;
-  total = 37500;
-  loading = false;
+
   pocessing = false;
 
-  onNoClick(): void {
-    // this.dialogRef.close();
-  }
+  successPayment = true;
+  total = 37500;
+  mobileNumber: any;
+  loading: boolean;
+  openStep2 = true;
+  currentRoute = "visapay";
+  selectedGateway = "mobileMoney";
+  useStripe = true;
+  connector1 = true;
+  connector2 = false;
+  number1 = true;
+  number2 = true;
+  number_1_Large = false;
+  number_2_Large = true;
+  number_3_Large = false;
+  readOnly = false;
+  number3;
+  momopayWaiting = false;
+  visacardWaiting = false;
+  buttonState = "Paiement";
+  hideButton = false;
+
   ngOnInit() {
     const style = {
       base: {
@@ -138,11 +149,18 @@ export class StripeModalComponent implements OnInit {
     }
   }
 
-  closeModal() {
-    // this.dialogRef.close("cancelled");
+  next() {
+    this.currentUrl = this.router.url;
+    let gateway = localStorage.getItem("url");
+    if (gateway != null) {
+      this.currentUrl = `${this.currentUrl}/${gateway}`;
+      localStorage.removeItem("url");
+    }
+
+    console.log(this.currentUrl);
+
+    if (this.currentUrl === "/hostedPayment/payments/visapay") {
+      this.router.navigate(["hostedPayment/payments/visapay", "processing"]);
+    }
   }
-}
-export interface DialogData {
-  animal: string;
-  name: string;
 }

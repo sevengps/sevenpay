@@ -1,0 +1,160 @@
+<div class="">
+  <div class="transaction-container">
+    <div class="elements-container">
+      <div
+        class="stepper-container"
+        [ngClass]="{ fixStepper: selectedGateway === 'visaCard' }"
+        [ngClass]="{ fixSuccessStepper: openStep3 }"
+      >
+        <div class="stepper-head">
+          <span
+            class="step-number-1"
+            [ngClass]="{
+              number1: number1,
+              'number-large': number_1_Large
+            }"
+          >
+          </span>
+          <span
+            class="step-connector connector1"
+            [ngClass]="{ connector1: connector1 }"
+          ></span>
+          <span
+            class="step-number-2 number2"
+            [ngClass]="{
+              number2: number2,
+              'number-large': number_2_Large
+            }"
+          ></span>
+          <span
+            class="step-connector connector2"
+            [ngClass]="{ connector2: connector2 }"
+          ></span>
+          <span
+            class="step-number-3 number3"
+            [ngClass]="{
+              number3: number3,
+              'number-large': number_3_Large
+            }"
+          ></span>
+        </div>
+      </div>
+      <div class="paymentStep-1">
+        <div class="total-container">
+          <span class="total">Total:&nbsp;</span>
+          <span class="amount">{{ total }}</span>
+          <span class="currency">XAF</span>
+        </div>
+        <mat-form-field class="select-form">
+          <mat-label>Selectionnez votre mode de paiement</mat-label>
+          <img
+            *ngIf="selectedGateway"
+            matPrefix
+            class="input-icon selectedPayment"
+            src="assets/icons/{{ selectedGateway }}.png"
+            width="50px"
+            height="50px"
+            class="selectedIcon"
+          />
+
+          <mat-select
+            [(value)]="selectedGateway"
+            (selectionChange)="valueChanged($event)"
+          >
+            <mat-option value="mobileMoney">
+              <img
+                matPrefix
+                class="input-icon"
+                src="assets/icons/mobileMoney.png"
+                width="30px"
+                height="30px"
+                alt="mobileMoney"
+                class="allIcons"
+              /><span>&nbsp; Mtn Mobile Money</span></mat-option
+            >
+            <mat-option value="orangeMoney">
+              <img
+                matPrefix
+                class="input-icon"
+                src="assets/icons/orangeMoney.png"
+                width="30px"
+                height="30px"
+                alt="orangeMoney"
+                class="allIcons"
+              /><span>&nbsp; Orange Money</span></mat-option
+            >
+            <mat-option value="expressUnion">
+              <img
+                matPrefix
+                class="input-icon"
+                src="assets/icons/expressUnion.png"
+                width="30px"
+                height="30px"
+                alt="Express Union"
+                class="allIcons"
+              /><span>&nbsp; EU Money</span></mat-option
+            >
+            <mat-option value="visaCard">
+              <img
+                matPrefix
+                class="input-icon"
+                src="assets/icons/visaCard.png"
+                width="30px"
+                height="30px"
+                alt="visaCard"
+                class="allIcons"
+              /><span>&nbsp; Visa Card</span>
+            </mat-option>
+            <mat-option value="paypalCard">
+              <img
+                matPrefix
+                class="input-icon"
+                src="assets/icons/paypalCard.png"
+                width="30px"
+                height="30px"
+                alt="paypalCard"
+                class="allIcons"
+              /><span>&nbsp; PayPal</span>
+            </mat-option>
+
+            <mat-option value="ubaCard">
+              <img
+                matPrefix
+                class="input-icon"
+                src="assets/icons/ubaCard.png"
+                width="30px"
+                height="30px"
+                alt="ubaCard"
+                class="allIcons"
+              />
+              <span>&nbsp; UBA Card</span></mat-option
+            >
+
+            <mat-option value="cardBlue">
+              <img
+                matPrefix
+                class="input-icon"
+                src="assets/icons/cardBlue.png"
+                width="30px"
+                height="30px"
+                alt="cardBlue"
+                class="allIcons"
+              />
+              <span>&nbsp; Card B</span></mat-option
+            >
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div class="payment-button">
+    <button
+      mat-raised-button
+      class="card-btn next"
+      (click)="next()"
+      [ngClass]="{ hideButton: hideButton }"
+    >
+      <span>{{ buttonState }}</span>
+    </button>
+  </div>
+</div>

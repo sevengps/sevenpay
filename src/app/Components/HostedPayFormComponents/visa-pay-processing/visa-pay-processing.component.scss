@@ -1,6 +1,7 @@
 $secondary: #94b30d;
 $primary: #0767b1;
 $default: #ffffff;
+$cardElementBackground: #edeeeb;
 $connectors: #bfbfbf;
 @import url("https://fonts.googleapis.com/css2?family=Rubik&family=Source+Sans+Pro:wght@400;600&display=swap");
 
@@ -23,7 +24,8 @@ $connectors: #bfbfbf;
   align-items: center;
   height: 100%;
   margin-left: 10rem;
-  // width: inherit;
+  position: relative;
+  top: -24px;
 }
 
 // .transaction-container-cliped {
@@ -31,8 +33,8 @@ $connectors: #bfbfbf;
 // }
 
 .stepper-container {
-  width: 90%;
-  margin-top: -2.6rem;
+  width: 88%;
+  margin-top: -0.9rem;
   margin-right: -9rem;
 }
 .stepper-head {
@@ -57,9 +59,9 @@ $connectors: #bfbfbf;
   }
   .step-number-1::before {
     content: "1";
-    height: 26px;
-    width: 26px;
-    background-color: $primary;
+    height: 24px;
+    width: 24px;
+    background-color: #bfbfbf;
     border-radius: 100%;
     position: relative;
     left: 0px;
@@ -68,13 +70,14 @@ $connectors: #bfbfbf;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    color: #ffffff;
   }
 
   .step-number-2::before {
     content: "2";
-    height: 26px;
-    width: 26px;
-    background-color: $connectors;
+    height: 24px;
+    width: 24px;
+    background-color: #bfbfbf;
     border-radius: 100%;
     position: relative;
     left: 0px;
@@ -83,14 +86,14 @@ $connectors: #bfbfbf;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    color: $default;
+    color: #ffffff;
   }
 
   .step-number-3::before {
     content: "3";
-    height: 26px;
-    width: 26px;
-    background-color: $connectors;
+    height: 24px;
+    width: 24px;
+    background-color: #bfbfbf;
     border-radius: 100%;
     position: relative;
     left: 0px;
@@ -99,7 +102,7 @@ $connectors: #bfbfbf;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    color: $default;
+    color: #ffffff;
   }
 
   // Step numbers
@@ -157,18 +160,6 @@ $connectors: #bfbfbf;
       width: 95%;
     }
   }
-}
-
-.visaCardPay-waiting {
-  border: 1px solid #707070;
-  padding: 1px;
-  opacity: 0.3;
-}
-
-.momopay-waiting {
-  border: 1px solid #707070;
-  padding: 1px;
-  opacity: 0.3;
 }
 
 .showStripeCard {
@@ -267,31 +258,172 @@ $connectors: #bfbfbf;
   }
 }
 
-.hideButton {
-  display: none;
+.momoPay {
+  width: 29rem;
+  margin-top: 7.7rem;
+  margin-left: 1rem;
+  form {
+    width: 100%;
+    margin-bottom: 0rem;
+    margin-left: -0.5rem;
+    margin-top: 0rem;
+    mat-form-field {
+      width: 100%;
+    }
+    span {
+      width: 95%;
+      margin-right: -16.5rem;
+    }
+  }
 }
 
-// Media queries
-// @media screen and (max-width: 490px) {
-//   .transaction-container {
-//     position: absolute;
-//     right: -1px;
-//     bottom: -59px;
-//     width: 100%;
-//     height: 94%;
-//     background-color: #ffffff;
-//     overflow: hidden;
-//     opacity: 1;
-//     clip-path: polygon(-21% 0, 120% 0%, 701% 60%, -47% 792%);
-//   }
+.payment-button {
+  width: 28rem;
+  .card-btn {
+    background-color: $secondary;
+    height: 3rem;
+    color: $default;
 
-//   .elements-container {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: space-around;
-//     align-items: center;
-//     height: 100%;
-//     margin-left: 0rem;
-//     width: inherit;
-//   }
-// }
+    mat-progress-spinner {
+      margin: 0 auto;
+      color: $default;
+    }
+  }
+}
+
+//stripe
+.payment-container {
+  margin: 0 auto;
+  width: 109%;
+  background-color: #ffffff;
+  margin-top: -23rem;
+  margin-left: 4.05rem;
+  border-radius: 6px;
+  margin-bottom: -14.5rem;
+  .header-container {
+    .header {
+      font-family: "Source Sans Pro", sans-serif;
+      font-weight: bolder;
+      color: $default;
+      margin: -0.5rem 0rem 0rem 3.5rem;
+    }
+    img {
+      margin-left: 37%;
+      margin-top: 5.5rem;
+      margin-bottom: 1rem;
+      width: 20%;
+    }
+  }
+}
+
+.stripeContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  padding: 1rem;
+  width: 100%;
+}
+
+.card-elements {
+  display: flex;
+  margin-top: -1.5rem;
+}
+.card-names {
+  display: flex;
+  justify-content: space-between;
+  margin-top: -1.5rem;
+  margin-bottom: -0.5rem;
+  margin-left: 5rem;
+  .name-cardNumber {
+    margin-left: -3.9rem;
+    font-weight: 590;
+    font-size: 0.89rem;
+  }
+
+  .name-CVC {
+    font-weight: 590;
+    font-size: 0.89rem;
+  }
+}
+
+.cardNumber {
+  margin: 2.5rem 0.5rem 0rem 1rem;
+  background-color: $cardElementBackground;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  width: 60%;
+}
+
+.cardCvc {
+  margin: 2.5rem 1.5rem 0rem 0.5rem;
+  background-color: #edeeeb;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  width: 14.5%;
+}
+
+.name-cardHolder {
+  margin: 1rem 0.5rem 0.5rem 1rem;
+  font-size: 0.89rem;
+  font-weight: 590;
+}
+.cardHolder {
+  background-color: #edeeeb;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  margin-left: 1rem;
+  width: 82%;
+}
+
+.name-cardExpiry {
+  margin: 1rem 0.5rem 0.5rem 1rem;
+  font-size: 0.89rem;
+  font-weight: 590;
+}
+.cardExp {
+  background-color: $cardElementBackground;
+  padding: 0.8rem;
+  border-radius: 0.5rem;
+  margin-left: 1rem;
+  width: 83%;
+}
+
+.paymentBtn {
+  margin-top: -1rem;
+  background-color: $primary;
+  color: $default;
+  margin: 0 auto;
+  padding: 0.23rem;
+  width: 91%;
+}
+
+.cancelBtn {
+  margin: 0 auto;
+  margin-top: 0.3rem;
+  background-color: $secondary;
+  color: $default;
+  padding: 0.23rem;
+  width: 91%;
+}
+
+.loading {
+  margin: 0 auto;
+  opacity: 0.3;
+}
+
+.cardErrors {
+  color: red;
+  font-size: 1rem;
+  padding: 1rem;
+  margin: 0rem 0rem 0.5rem 0rem;
+}
+.payment-success {
+  color: green;
+  font-size: 1rem;
+  padding: 1rem;
+  margin: 0rem 0rem 1rem 0rem;
+}
+
+.visaCardPay-waiting {
+  opacity: 0.8;
+}

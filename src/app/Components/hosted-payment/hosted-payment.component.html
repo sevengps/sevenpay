@@ -5,56 +5,27 @@
 <div class="boder-bottom"></div>
 <div class="main-container">
   <div class="payment-container">
-    <!-- head -->
-    <!-- <div class="container-head">
-      <mat-icon class="back" (click)="gotoPrevious()"
-        >keyboard_arrow_left</mat-icon
-      >
-      <span>{{ paymentHeader }}</span>
-      <mat-icon class="translate">g_translate</mat-icon>
-    </div> -->
-
-    <app-head
-      (emitPreviousStateEvent)="getPreviousFormState($event)"
-      [formState]="currentFormState"
-      [paymentHeader]="paymentHeader"
-      [paymentHeaderResponsive]="paymentHeaderResponsive"
-    ></app-head>
+    <app-head [paymentHeader]="paymentHeader"></app-head>
 
     <!-- body -->
-    <app-payment-body
-      (paymentMethod)="getGateway($event)"
-      [receiveNextActiveState]="nextActiveState"
-      [receivePreviousActiveState]="previousActiveState"
-      (emitCurrentState)="getCurrentFormState($event)"
-    ></app-payment-body>
+    <router-outlet
+      (activate)="getActivatedComponentDetails($event)"
+    ></router-outlet>
 
     <!-- side icons for card and phone -->
     <div
-      *ngIf="
-        (selectedGateway === 'mobileMoney' && formState === 'step2') ||
-        (selectedGateway === 'mobileMoney' && formState === 'waiting')
-      "
+      *ngIf="currentRoute === 'momopay' && openStep2"
       class="mobilePhone-Container"
     >
       <img src="assets/icons/Phoneeneo@2x.png" alt="" />
     </div>
     <div
-      *ngIf="
-        (selectedGateway === 'visaCard' && formState === 'step2') ||
-        (selectedGateway === 'visaCard' && formState === 'waiting')
-      "
+      *ngIf="currentRoute === 'visapay' && openStep2"
       class="creditCard-Container"
     >
       <img src="assets/icons/creditCard.png" alt="" />
     </div>
   </div>
-
-  <!-- button -->
-  <app-payment-button
-    (nextEvent)="getNextEventFromButton($event)"
-    [formState]="currentFormState"
-  ></app-payment-button>
 
   <!-- branding -->
   <div class="branding-container">

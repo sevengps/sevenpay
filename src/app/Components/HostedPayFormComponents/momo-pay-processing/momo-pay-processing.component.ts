@@ -2,42 +2,42 @@ import { Router } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 
 @Component({
-  selector: "app-success-transaction",
-  templateUrl: "./success-transaction.component.html",
-  styleUrls: ["./success-transaction.component.scss"],
+  selector: "app-momo-pay-processing",
+  templateUrl: "./momo-pay-processing.component.html",
+  styleUrls: ["./momo-pay-processing.component.scss"],
 })
-export class SuccessTransactionComponent implements OnInit {
-  transDate = new Date().toUTCString();
-  currentUrl: any;
-
+export class MomoPayProcessingComponent implements OnInit {
+  currentUrl: string;
   constructor(private router: Router) {}
 
-  successPayment = true;
-  openStep3 = true;
-  transId = "N° TR54HA00959";
-  total = 37500;
+  buttonState: any;
+  openStep2 = true;
   selectedGateway = "mobileMoney";
-  currentRoute = "success";
-  url;
+  currentRoute = "momopay";
+  successPayment = true;
+  total = 37500;
   mobileNumber: any;
-  loading: boolean;
+  useStripe = true;
   connector1 = true;
-  connector2 = true;
-  number3 = true;
+  connector2 = false;
   number1 = true;
   number2 = true;
   number_1_Large = false;
-  number_2_Large = false;
-  number_3_Large = true;
+  number_2_Large = true;
+  number_3_Large = false;
   readOnly = false;
+  number3;
   momopayWaiting = false;
   visacardWaiting = false;
   activeUrl = "";
   adjustContainer = false;
   hideButton = false;
-  buttonState = "Continuer";
 
-  ngOnInit() {}
+  ngOnInit() {
+    setTimeout(() => {
+      this.router.navigate(["hostedPayment/payments/success"]);
+    }, 2500);
+  }
 
   next() {
     this.currentUrl = this.router.url;
@@ -47,9 +47,10 @@ export class SuccessTransactionComponent implements OnInit {
       localStorage.removeItem("url");
     }
     console.log(this.currentUrl);
-    if (this.currentUrl === "/hostedPayment/payments/success") {
+
+    if (this.currentUrl === "/hostedPayment/payments/momopay/processing") {
+      this.router.navigate(["hostedPayment/payments/success"]);
       this.buttonState = "Continuer";
-      this.router.navigate([""]);
     }
   }
 }

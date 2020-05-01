@@ -48,7 +48,7 @@ export class SelectPaymentComponent implements OnInit {
   ngOnInit() {}
 
   openHostedPayment(){
-    this.router.navigate(["/hostedPayment","7gps"]);
+    this.router.navigate(["/hostedPayment","payments"]);
   }
 }
 

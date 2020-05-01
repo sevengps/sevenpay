@@ -1,3 +1,5 @@
+import { Observable } from "rxjs";
+import { Location } from "@angular/common";
 import {
   Component,
   OnInit,
@@ -7,13 +9,14 @@ import {
   SimpleChanges,
   OnChanges,
 } from "@angular/core";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-payment-button",
   templateUrl: "./payment-button.component.html",
   styleUrls: ["./payment-button.component.scss"],
 })
-export class PaymentButtonComponent implements OnInit, OnChanges {
+export class PaymentButtonComponent implements OnInit {
   /**
    * EVENTS
    */
@@ -23,7 +26,11 @@ export class PaymentButtonComponent implements OnInit, OnChanges {
   @Input() currentState;
   @Input() formState;
 
-  constructor() {}
+  constructor(
+    private router: Router,
+    private location: Location,
+    private route: ActivatedRoute
+  ) {}
 
   openStep1 = true;
   openStep2 = true;
@@ -31,65 +38,72 @@ export class PaymentButtonComponent implements OnInit, OnChanges {
   waiting = true;
   emitNextEvent = "step2";
   buttonState;
+  hideBtn;
+  currentUrl = this.router.url;
+  obsUrl: Observable<any>;
 
   // OnInit lifecycle hook
   ngOnInit() {
     if (this.formState === "mobileMoney") {
       this.buttonState = "Continuer";
     }
-  }
 
-  // OnChanges lifecycle hook
-  ngOnChanges(changes: SimpleChanges): void {
-    for (let propertyName in changes) {
-      let change = changes[propertyName];
-      let current = change.currentValue;
-      let previous = change.previousValue;
-
-      if (current === "") {
-        this.emitNextEvent = "step2";
-        this.buttonState = "Paiement";
-      } else {
-        if (current === "step2") {
-          this.emitNextEvent = "waiting";
-          this.buttonState = "Paiement";
-        } else {
-          if (current === "waiting") {
-            this.buttonState = "Loading";
-            setTimeout(() => {
-              this.nextEvent.emit("step3");
-            }, 3000);
-            this.emitNextEvent = "waiting";
-          } else {
-            if (current === "step3") {
-              this.emitNextEvent = "close";
-              this.buttonState = "Continuer";
-            } else {
-              if (current === "goBackToStep1") {
-                //emit step 1 event
-                this.emitNextEvent = "";
-                this.buttonState = "Continue";
-              } else {
-                if (current === "goBackToStep2") {
-                  //emit step2 event
-                  this.emitNextEvent = "step2";
-                  this.buttonState = "Paiement";
-                } else {
-                  if (current === "goBackToWaiting") {
-                    //emit waiting event
-                    this.emitNextEvent = "waiting";
-                    this.buttonState = "Paiement";
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
+    this.route.paramMap.subscribe((url) => {
+      console.log(url.get("web"));
+    });
+    this.obsUrl = Observable.create((observer) => {
+      observer.next(this.router.url);
+    });
   }
 
   next() {
-    this.nextEvent.emit(this.emitNextEvent);
+    this.currentUrl = this.router.url;
+    let gateway = localStorage.getItem("url");
+    if (gateway != null) {
+      this.currentUrl = `${this.currentUrl}/${gateway}`;
+      localStorage.removeItem("url");
+    }
+
+    console.log(this.currentUrl);
+
+    if (this.currentUrl === "/hostedPayment/payments") {
+      this.router.navigate(["hostedPayment/payments/momopay"]);
+      this.buttonState = "Paiement";
+    }
+
+    if (this.currentUrl === "/hostedPayment/payments/mobileMoney") {
+      this.router.navigate(["hostedPayment/payments/momopay"]);
+      this.buttonState = "Paiement";
+    }
+
+    if (this.currentUrl === "/hostedPayment/payments/momopay") {
+      this.router.navigate(["hostedPayment/payments/momopay", "processing"]);
+      this.buttonState = "Loading";
+    }
+
+    if (this.currentUrl === "/hostedPayment/payments/momopay/processing") {
+      this.router.navigate(["hostedPayment/payments/success"]);
+      this.buttonState = "Continuer";
+    }
+
+    if (this.currentUrl === "/hostedPayment/payments/visaCard") {
+      this.router.navigate(["hostedPayment/payments/visapay"]);
+      this.buttonState = "Paiement";
+    }
+
+    if (this.currentUrl === "/hostedPayment/payments/visapay") {
+      this.router.navigate(["hostedPayment/payments/visapay", "processing"]);
+      this.buttonState = "Loading";
+    }
+
+    if (this.currentUrl === "/hostedPayment/payments/visapay/processing") {
+      this.router.navigate(["hostedPayment/payments/success"]);
+      this.buttonState = "Continuer";
+    }
+
+    if (this.currentUrl === "/hostedPayment/payments/success") {
+      this.buttonState = "Continuer";
+      this.router.navigate([""]);
+    }
   }
 }

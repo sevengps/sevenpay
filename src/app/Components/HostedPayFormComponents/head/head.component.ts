@@ -1,3 +1,6 @@
+import { Router } from "@angular/router";
+import { Observable } from "rxjs";
+import { Location } from "@angular/common";
 import {
   Component,
   OnInit,
@@ -13,54 +16,42 @@ import {
   templateUrl: "./head.component.html",
   styleUrls: ["./head.component.scss"],
 })
-export class HeadComponent implements OnInit, OnChanges {
-  constructor() {}
+export class HeadComponent implements OnInit {
+  constructor(private location: Location, private router: Router) {}
 
   @Input() paymentHeader;
   @Input() paymentHeaderResponsive;
   @Input() formState;
   @Output() emitPreviousStateEvent = new EventEmitter();
   previousEvent;
+  frenchElement: any;
+  hideBackBtn = false;
+  observeUrl: Observable<any>;
 
-  ngOnInit() {}
-
-  ngOnChanges(changes: SimpleChanges): void {
-    for (let propertyName in changes) {
-      let change = changes[propertyName];
-      let current = change.currentValue;
-      let previous = change.previousValue;
-
-      if (current === "step2") {
-        this.previousEvent = "goBackToStep1";
-      } else {
-        if (current === "waiting") {
-          this.previousEvent = "goBackToStep2";
-        } else {
-          if (current === "step3") {
-            this.previousEvent = "goBackToStep1";
-          } else {
-            if (current === "goBackToStep2") {
-              this.previousEvent = "goBackToStep1";
-            } else {
-              if (current === "goBackToWaiting") {
-                this.previousEvent = "goBackToStep2";
-              } else {
-                if (current === "goBackToStep1") {
-                  this.previousEvent = "close";
-                } else {
-                  if (current === "") {
-                    this.previousEvent = "close";
-                  }
-                }
-              }
-            }
-          }
-        }
+  ngOnInit() {
+    this.frenchElement = document.querySelector(".language-container-french");
+    this.observeUrl = Observable.create((observer) => {
+      observer.next(this.router.url);
+    });
+    this.observeUrl.subscribe((url) => {
+      console.log(url);
+      if (url === "/hostedPayment/payments/success") {
+        this.hideBackBtn = true;
       }
-    }
+    });
   }
 
+  showFrenchOption() {
+    this.frenchElement.classList.add("showElement");
+    setTimeout(() => {
+      this.hideFrenchOption();
+    }, 2500);
+  }
+  hideFrenchOption() {
+    this.frenchElement.classList.remove("showElement");
+  }
   gotoPrevious() {
-    this.emitPreviousStateEvent.emit(this.previousEvent);
+    // this.emitPreviousStateEvent.emit(this.previousEvent);
+    this.location.back();
   }
 }

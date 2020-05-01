@@ -6,12 +6,12 @@ $cardElementBackground: #edeeeb;
 
 .payment-container {
   margin: 0 auto;
-  width: 93%;
+  width: 109%;
   background-color: #ffffff;
-  margin-top: -7rem;
-  margin-left: 3rem;
+  margin-top: -32rem;
+  margin-left: 4.05rem;
   border-radius: 6px;
-  margin-bottom: -4.5rem;
+  margin-bottom: -14.5rem;
   .header-container {
     .header {
       font-family: "Source Sans Pro", sans-serif;
@@ -20,9 +20,9 @@ $cardElementBackground: #edeeeb;
       margin: -0.5rem 0rem 0rem 3.5rem;
     }
     img {
-      margin-left: 28%;
-      margin-top: 2.5rem;
-      margin-bottom: 1rem;
+      margin-left: 39%;
+      margin-top: 5.5rem;
+      margin-bottom: 0rem;
       width: 20%;
     }
   }
@@ -33,6 +33,7 @@ $cardElementBackground: #edeeeb;
   flex-direction: column;
   justify-content: space-around;
   padding: 1rem;
+  width: 100%;
 }
 
 .card-elements {
@@ -66,10 +67,10 @@ $cardElementBackground: #edeeeb;
 
 .cardCvc {
   margin: 2.5rem 1.5rem 0rem 0.5rem;
-  background-color: $cardElementBackground;
+  background-color: #edeeeb;
   padding: 0.8rem;
   border-radius: 0.5rem;
-  width: 19%;
+  width: 14.5%;
 }
 
 .name-cardHolder {
@@ -78,11 +79,11 @@ $cardElementBackground: #edeeeb;
   font-weight: 590;
 }
 .cardHolder {
-  background-color: $cardElementBackground;
+  background-color: #edeeeb;
   padding: 0.8rem;
   border-radius: 0.5rem;
   margin-left: 1rem;
-  width: 83%;
+  width: 82%;
 }
 
 .name-cardExpiry {

@@ -1,3 +1,4 @@
+import { RouterModule } from '@angular/router';
 import { FormsModule } from "@angular/forms";
 import { MaterialModule } from "./material.module";
 import { NgModule } from "@angular/core";
@@ -11,25 +12,35 @@ import { PaymentButtonComponent } from "../Components/HostedPayFormComponents/pa
 import { PaymentBodyComponent } from "../Components/HostedPayFormComponents/payment-body/payment-body.component";
 import { SuccessTransactionComponent } from "../Components/HostedPayFormComponents/success-transaction/success-transaction.component";
 import { StripeModalComponent } from "../Components/stripe-modal/stripe-modal.component";
+import { MomoPayComponent } from '../Components/HostedPayFormComponents/momo-pay/momo-pay.component';
+import { MomoPayProcessingComponent } from '../Components/HostedPayFormComponents/momo-pay-processing/momo-pay-processing.component';
+import { VisaPayProcessingComponent } from '../Components/HostedPayFormComponents/visa-pay-processing/visa-pay-processing.component';
+import { VisaPayComponent } from '../Components/HostedPayFormComponents/visa-pay/visa-pay.component';
+import { PaymentHomeComponent } from '../Components/HostedPayFormComponents/payment-home/payment-home.component';
 
 const paymentComponents = [
   PaymentMethodsComponent,
   SuccessPaymentComponent,
   SelectPaymentComponent,
+  HostedPaymentComponent,
+  HeadComponent,
+  PaymentButtonComponent,
+  PaymentBodyComponent,
+  SuccessTransactionComponent,
+  StripeModalComponent,
+  MomoPayComponent,
+  MomoPayProcessingComponent,
+  VisaPayProcessingComponent,
+  VisaPayComponent,
 ];
 
 @NgModule({
   declarations: [
     paymentComponents,
-    HostedPaymentComponent,
-    HeadComponent,
-    PaymentButtonComponent,
-    PaymentBodyComponent,
-    SuccessTransactionComponent,
-    StripeModalComponent,
+    PaymentHomeComponent,
   ],
   // entryComponents: [StripeModalComponent],
-  imports: [CommonModule, MaterialModule, FormsModule],
+  imports: [CommonModule, MaterialModule, FormsModule,RouterModule],
   exports: [paymentComponents],
 })
 export class PaymentModule {}

@@ -1,7 +1,6 @@
 import { PaymentsService } from "./../../Services/payments.service";
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, SimpleChanges, OnChanges } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
-import { MatSnackBar } from "@angular/material/snack-bar";
 
 @Component({
   selector: "app-hosted-payment",
@@ -9,59 +8,49 @@ import { MatSnackBar } from "@angular/material/snack-bar";
   styleUrls: ["./hosted-payment.component.scss"],
 })
 export class HostedPaymentComponent implements OnInit {
-  constructor() {}
+  constructor(private router: Router) {}
 
   paymentHeader = "Selectionnez de votre mode de paiement";
   paymentHeaderResponsive = "Mode de paiement";
   selectedGateway = "";
   currentState = "Continuer";
-  currentFormState: any;
-  nextActiveState = "";
-  previousActiveState: any;
+  currentRoute = "";
   openStep2 = false;
   openStep3 = false;
-  number1 = true;
-  number2 = false;
-  number3 = false;
-  connector1 = false;
-  connector2 = false;
   sucessPayment = false;
   waiting = false;
   formState;
-  //OnInit lifecycle hook
+  getUrl = this.router.url;
   ngOnInit() {}
+
+  showPhone = false;
+  showCard = false;
 
   getGateway(e) {
     this.selectedGateway = e;
     console.log(this.selectedGateway);
   }
-  getCurrentFormState(event) {
-    this.currentFormState = event;
-    this.formState = event;
-  }
-  getNextEventFromButton(event) {
-    this.nextActiveState = event;
-    if (event === "step2" || event === "goBackToStep2") {
-      this.paymentHeader = "Details de paiement";
+
+  getActivatedComponentDetails(event) {
+    console.log(event);
+
+    if (event.openStep2 != undefined || event.waiting != undefined) {
+      this.openStep2 = true;
+      this.paymentHeader = "Mode de paiement";
+    }
+
+    if (event.openStep3 != undefined) {
+      this.openStep3 = true;
+      this.openStep2 = false;
+      this.paymentHeader = "Paiement Effectué";
+    }
+
+    if (event.currentRoute != undefined && event.currentRoute === "momopay") {
+      this.currentRoute = event.currentRoute;
     } else {
-      if (event === "step2" || event === "goBackToStep2") {
-        this.paymentHeader = "Details de paiement";
-      } else {
-        if (event === "waiting" || event === "goBackToWaiting") {
-          this.paymentHeader = "Details de paiement";
-        } else {
-          if (event === "step3") {
-            this.paymentHeader = "Paiement Effectué";
-          }
-        }
+      if (event.currentRoute != undefined && event.currentRoute === "visapay") {
+        this.currentRoute = event.currentRoute;
       }
     }
-  }
-  gotoPreviousFormState(event) {
-    this.previousActiveState = event;
-  }
-
-  getPreviousFormState(event) {
-    this.previousActiveState = event;
   }
 }

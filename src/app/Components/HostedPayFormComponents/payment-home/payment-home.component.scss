@@ -23,7 +23,8 @@ $connectors: #bfbfbf;
   align-items: center;
   height: 100%;
   margin-left: 10rem;
-  // width: inherit;
+  position: relative;
+  top: -24px;
 }
 
 // .transaction-container-cliped {
@@ -31,7 +32,7 @@ $connectors: #bfbfbf;
 // }
 
 .stepper-container {
-  width: 90%;
+  width: 88%;
   margin-top: -2.6rem;
   margin-right: -9rem;
 }
@@ -57,9 +58,9 @@ $connectors: #bfbfbf;
   }
   .step-number-1::before {
     content: "1";
-    height: 26px;
-    width: 26px;
-    background-color: $primary;
+    height: 24px;
+    width: 24px;
+    background-color: #bfbfbf;
     border-radius: 100%;
     position: relative;
     left: 0px;
@@ -68,13 +69,14 @@ $connectors: #bfbfbf;
     flex-direction: row;
     align-items: center;
     justify-content: center;
+    color: #ffffff;
   }
 
   .step-number-2::before {
     content: "2";
-    height: 26px;
-    width: 26px;
-    background-color: $connectors;
+    height: 24px;
+    width: 24px;
+    background-color: #bfbfbf;
     border-radius: 100%;
     position: relative;
     left: 0px;
@@ -83,14 +85,14 @@ $connectors: #bfbfbf;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    color: $default;
+    color: #ffffff;
   }
 
   .step-number-3::before {
     content: "3";
-    height: 26px;
-    width: 26px;
-    background-color: $connectors;
+    height: 24px;
+    width: 24px;
+    background-color: #bfbfbf;
     border-radius: 100%;
     position: relative;
     left: 0px;
@@ -99,7 +101,7 @@ $connectors: #bfbfbf;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    color: $default;
+    color: #ffffff;
   }
 
   // Step numbers
@@ -177,7 +179,7 @@ $connectors: #bfbfbf;
 
 // fix stepper when visa card is selected
 .fixStepper {
-  margin-top: 0rem;
+  margin-top: -3rem;
 }
 
 .fixSuccessStepper {
@@ -267,31 +269,49 @@ $connectors: #bfbfbf;
   }
 }
 
-.hideButton {
-  display: none;
+.paymentStep-1 {
+  width: 100%;
+  margin-right: 10.5rem;
+  margin-top: 3rem;
 }
 
-// Media queries
-// @media screen and (max-width: 490px) {
-//   .transaction-container {
-//     position: absolute;
-//     right: -1px;
-//     bottom: -59px;
-//     width: 100%;
-//     height: 94%;
-//     background-color: #ffffff;
-//     overflow: hidden;
-//     opacity: 1;
-//     clip-path: polygon(-21% 0, 120% 0%, 701% 60%, -47% 792%);
-//   }
+.select-form {
+  width: 63%;
+  margin-right: -12rem;
+  margin-left: 18rem;
+  margin-top: -6rem;
+}
 
-//   .elements-container {
-//     display: flex;
-//     flex-direction: column;
-//     justify-content: space-around;
-//     align-items: center;
-//     height: 100%;
-//     margin-left: 0rem;
-//     width: inherit;
-//   }
-// }
+mat-option img {
+  margin-bottom: -0.5rem;
+}
+
+.total-container {
+  margin-top: -13.5rem;
+  margin-left: 23.5rem;
+  margin-right: -11rem;
+  margin-bottom: 5.7rem;
+  .total {
+    color: #636363;
+    font-family: "Rubik", sans-serif;
+    font-size: 1.8rem;
+  }
+  .amount {
+    color: $secondary;
+    font-size: 2.2rem;
+  }
+  .currency {
+    color: $secondary;
+    margin-left: 0.3rem;
+  }
+}
+.selectedIcon {
+  width: 50px;
+  height: auto;
+  position: relative;
+  top: 8px;
+}
+.allIcons {
+  width: 40px;
+  height: auto;
+}

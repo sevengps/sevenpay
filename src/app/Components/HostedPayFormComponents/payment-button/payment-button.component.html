@@ -1,4 +1,4 @@
-<div class="payment-button" (click)="next()">
+<div class="payment-button" (click)="next()" [ngClass]="{ hideBtn: hideBtn }">
   <button mat-raised-button class="card-btn next">
     <span *ngIf="buttonState != 'Loading'">{{ buttonState }}</span>
     <mat-progress-spinner
