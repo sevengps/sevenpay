@@ -16,12 +16,16 @@ $default: #ffffff;
     margin-top: 0.4rem;
     font-size: 1.5rem;
     font-family: "Rubik", sans-serif;
+    position: relative;
+    left: -5rem;
+    top: 0.5rem;
   }
   mat-icon.back {
     font-size: 3.8rem;
-    margin-left: -2rem;
-    margin-top: -1.6rem;
     cursor: pointer;
+    position: relative;
+    top: -0.3rem;
+    left: -5rem;
   }
 
   mat-icon.translate {
@@ -30,6 +34,19 @@ $default: #ffffff;
     margin-top: 1rem;
     cursor: pointer;
   }
+}
+
+//shift heading for successful payment
+.paymentSuccess {
+  left: 0rem !important;
+}
+// appy styles on icon and span while in payment mode
+.paymentModeIcon {
+  left: -8.9rem !important;
+}
+
+.paymentModeSpan {
+  left: -10rem !important;
 }
 .responsive {
   display: none;
@@ -43,7 +60,9 @@ select {
 .language-container-english {
   background-color: white;
   padding: 3px;
-  margin-top: 1rem;
+  position: relative;
+  top: 1rem;
+  right: -0.5rem;
 
   img {
     margin-bottom: -5px;
@@ -60,11 +79,14 @@ select {
 
 .language-container-french {
   display: none;
-  margin-top: 1rem;
-  margin-bottom: -56px;
-  margin-left: -13.1rem;
-  background-color: $default;
+  background-color: white;
   padding: 3px;
+  position: relative;
+  top: 3rem;
+  right: 10.5rem;
+  position: relative;
+  top: 1rem;
+  right: -5rem;
   img {
     margin-bottom: -5px;
     height: 13.5px;
@@ -92,16 +114,6 @@ option:hover {
 
 .showElement {
   display: inline-block;
-}
-
-.hideBackBtn {
-  display: none;
-}
-
-.completePayment {
-}
-.modePayment {
-  margin-left: -3rem;
 }
 
 // @media screen and (max-width: 490px) {

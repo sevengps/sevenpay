@@ -114,17 +114,27 @@ export class MomoPayComponent implements OnInit {
   //Momo Payment ends here
 
   next() {
-    this.currentUrl = this.router.url;
-    let gateway = localStorage.getItem("url");
-    if (gateway != null) {
-      this.currentUrl = `${this.currentUrl}/${gateway}`;
-      localStorage.removeItem("url");
+    let number = `${this.mobileNumber}`;
+    console.log(number);
+    if (number.length < 9 || number === undefined) {
+      return false;
+    } else {
+      this.currentUrl = this.router.url;
+      let gateway = localStorage.getItem("url");
+      if (gateway != null) {
+        this.currentUrl = `${this.currentUrl}/${gateway}`;
+        localStorage.removeItem("url");
+      }
+      if (this.currentUrl === "/hostedPayment/payments/momopay") {
+        this.router.navigate(["hostedPayment/payments/momopay", "processing"]);
+      }
     }
+  }
 
-    console.log(this.currentUrl);
-
-    if (this.currentUrl === "/hostedPayment/payments/momopay") {
-      this.router.navigate(["hostedPayment/payments/momopay", "processing"]);
+  validateNumberLength(event) {
+    let number = `${event.target.value}`;
+    if (number.length > 8 && event.key != "Backspace") {
+      return false;
     }
   }
 }

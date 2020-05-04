@@ -22,6 +22,7 @@ export class PaymentHomeComponent implements OnInit {
   connector2 = false;
   number1 = true;
   number2 = false;
+  openStep1 = true;
   number_1_Large = true;
   number_2_Large = false;
   number_3_Large = false;

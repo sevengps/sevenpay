@@ -15,6 +15,7 @@ export class HostedPaymentComponent implements OnInit {
   selectedGateway = "";
   currentState = "Continuer";
   currentRoute = "";
+  openStep1 = false;
   openStep2 = false;
   openStep3 = false;
   sucessPayment = false;
@@ -43,6 +44,13 @@ export class HostedPaymentComponent implements OnInit {
       this.openStep3 = true;
       this.openStep2 = false;
       this.paymentHeader = "Paiement Effectué";
+    }
+
+    if (event.openStep1 != undefined) {
+      this.openStep1 = true;
+      this.openStep2 = false;
+      this.openStep3 = false;
+      this.paymentHeader = "Selectionnez de votre mode de paiement";
     }
 
     if (event.currentRoute != undefined && event.currentRoute === "momopay") {

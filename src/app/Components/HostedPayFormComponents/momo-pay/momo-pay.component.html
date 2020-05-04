@@ -52,8 +52,11 @@
             <input
               matInput
               type="number"
+              name="mobileNumber"
               onkeydown="javascript: return event.keyCode === 8 ||
                               event.keyCode === 46 ? true : !isNaN(Number(event.key))"
+              (keydown)="validateNumberLength($event)"
+              [value]="mobileNumber"
             />
           </mat-form-field>
 

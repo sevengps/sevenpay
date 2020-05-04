@@ -1,26 +1,32 @@
 <div class="container-head">
   <mat-icon
     class="back"
+    *ngIf="paymentHeader != 'Paiement Effectué'"
     (click)="gotoPrevious()"
     [ngClass]="{
-      hideBackBtn: hideBackBtn,
-      modePayment: true,
-      completePayment: true
+      paymentModeIcon: paymentHeader === 'Mode de paiement'
     }"
     >keyboard_arrow_left</mat-icon
   >
-  <span class="Not-responsive">{{ paymentHeader }}</span>
+  <span
+    class="Not-responsive"
+    [ngClass]="{
+      paymentSuccess: paymentHeader === 'Paiement Effectué',
+      paymentModeSpan: paymentHeader === 'Mode de paiement'
+    }"
+    >{{ paymentHeader }}</span
+  >
   <span class="responsive">{{ paymentHeaderResponsive }}</span>
-  <div class="language-container-english" (mouseover)="showFrenchOption()">
+  <!-- <div class="language-container-english" (mouseover)="showFrenchOption()">
     <img src="assets/icons/engFlag.png" alt="flag" />
     <select id="language" disabled>
       <option>EN</option>
     </select>
-  </div>
-  <div class="language-container-french">
+  </div> -->
+  <!-- <div class="language-container-french">
     <img src="assets/icons/frenchFlag.png" alt="flag" />
     <select id="language" disabled>
       <option>FR</option>
     </select>
-  </div>
+  </div> -->
 </div>

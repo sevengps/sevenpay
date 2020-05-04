@@ -100,37 +100,13 @@ export class VisaPayComponent implements OnInit {
     });
   }
 
-  async makePayment(event) {
-    event.preventDefault();
+  async makePayment() {
     const { source, error } = await this.stripe.createSource(this.cardNumber);
     if (error) {
       this.cardErrorOrPaymentSuccess = error.message;
       this.cardError = true;
     } else {
-      this.pocessing = true;
-      this.loading = true;
-      const user = {
-        id: source.id,
-        username: "sinclairegps kambang",
-        email: "sinclaire7gps@yahoomail.com",
-        amount: this.total,
-      };
-      this.paymentService.makeCreditCardPayments(user).subscribe((response) => {
-        setTimeout(() => {
-          if (response) {
-            console.log(response);
-            if (response.message === "Payment was successful.") {
-              this.loading = false;
-              this.pocessing = false;
-              this.cardErrorOrPaymentSuccess = response.message;
-              this.paymentSuccess = true;
-              setTimeout(() => {
-                // this.dialogRef.close();
-              }, 1000);
-            }
-          }
-        }, 1000);
-      });
+      this.router.navigate(["hostedPayment/payments/visapay", "processing"]);
     }
   }
 
@@ -144,23 +120,12 @@ export class VisaPayComponent implements OnInit {
       return false;
     } else {
       if (event.key === "Enter") {
-        this.makePayment(event);
+        this.makePayment();
       }
     }
   }
 
-  next() {
-    this.currentUrl = this.router.url;
-    let gateway = localStorage.getItem("url");
-    if (gateway != null) {
-      this.currentUrl = `${this.currentUrl}/${gateway}`;
-      localStorage.removeItem("url");
-    }
-
-    console.log(this.currentUrl);
-
-    if (this.currentUrl === "/hostedPayment/payments/visapay") {
-      this.router.navigate(["hostedPayment/payments/visapay", "processing"]);
-    }
+  next(event) {
+    this.makePayment();
   }
 }
