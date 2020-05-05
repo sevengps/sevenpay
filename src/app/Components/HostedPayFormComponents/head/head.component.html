@@ -4,7 +4,7 @@
     *ngIf="paymentHeader != 'Paiement Effectué'"
     (click)="gotoPrevious()"
     [ngClass]="{
-      paymentModeIcon: paymentHeader === 'Mode de paiement'
+      paymentModeIcon: paymentHeader === 'Details de paiement'
     }"
     >keyboard_arrow_left</mat-icon
   >
@@ -12,7 +12,7 @@
     class="Not-responsive"
     [ngClass]="{
       paymentSuccess: paymentHeader === 'Paiement Effectué',
-      paymentModeSpan: paymentHeader === 'Mode de paiement'
+      paymentModeSpan: paymentHeader === 'Details de paiement'
     }"
     >{{ paymentHeader }}</span
   >

@@ -41,9 +41,9 @@ $default: #ffffff;
   left: 0rem !important;
 }
 // appy styles on icon and span while in payment mode
-.paymentModeIcon {
-  left: -8.9rem !important;
-}
+// .paymentModeIcon {
+//   left: -8.9rem !important;
+// }
 
 .paymentModeSpan {
   left: -10rem !important;
@@ -116,11 +116,38 @@ option:hover {
   display: inline-block;
 }
 
-// @media screen and (max-width: 490px) {
-//   .responsive {
-//     display: inline;
-//   }
-//   .Not-responsive {
-//     display: none;
-//   }
-// }
+@media screen and (max-width: 490px) {
+  .responsive {
+    display: inline;
+  }
+  .Not-responsive {
+    display: none;
+  }
+
+  .container-head span {
+    margin-top: 0.4rem;
+    font-size: 1.8rem;
+    font-family: "Rubik", sans-serif;
+    position: relative;
+    left: -1.6rem;
+    top: 0.5rem;
+  }
+
+  .container-head mat-icon.back {
+    font-size: 3.8rem;
+    cursor: pointer;
+    position: relative;
+    top: -0.3rem;
+    left: -2rem;
+  }
+}
+@media screen and (max-width: 375px) {
+  .container-head span {
+    margin-top: 0.6rem;
+    font-size: 1.6rem;
+    font-family: "Rubik", sans-serif;
+    position: relative;
+    left: -1.6rem;
+    top: 0.5rem;
+  }
+}

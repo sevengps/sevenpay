@@ -41,6 +41,12 @@
       </div>
       <div class="momoPay momopay-waiting">
         <form>
+          <div class="total-container-responsive">
+            <span class="total">Total:&nbsp;</span><br />
+            <span class="amount">{{ total }}</span>
+            <span class="currency">XAF</span>
+          </div>
+
           <mat-form-field class="momoPaymentForm">
             <mat-label>Entrez le numéro de téléphone</mat-label>
             <input
@@ -52,11 +58,11 @@
             />
           </mat-form-field>
 
-          <span
-            >Vos informations personnelles ne seront utilisées à d'autres fins,
+          <p>
+            Vos informations personnelles ne seront utilisées à d'autres fins,
             vous pouvez lire notre
             <a href="#">politique de confidentialité</a>
-          </span>
+          </p>
         </form>
       </div>
     </div>

@@ -37,13 +37,15 @@ export class HostedPaymentComponent implements OnInit {
 
     if (event.openStep2 != undefined || event.waiting != undefined) {
       this.openStep2 = true;
-      this.paymentHeader = "Mode de paiement";
+      this.paymentHeader = "Details de paiement";
+      this.paymentHeaderResponsive = "Details de paiement";
     }
 
     if (event.openStep3 != undefined) {
       this.openStep3 = true;
       this.openStep2 = false;
       this.paymentHeader = "Paiement Effectué";
+      this.paymentHeaderResponsive = "Paiement Effectué";
     }
 
     if (event.openStep1 != undefined) {

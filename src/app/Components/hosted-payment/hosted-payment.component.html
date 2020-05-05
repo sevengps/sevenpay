@@ -5,7 +5,10 @@
 <div class="boder-bottom"></div>
 <div class="main-container">
   <div class="payment-container">
-    <app-head [paymentHeader]="paymentHeader"></app-head>
+    <app-head
+      [paymentHeader]="paymentHeader"
+      [paymentHeaderResponsive]="paymentHeaderResponsive"
+    ></app-head>
 
     <!-- body -->
     <router-outlet

@@ -34,9 +34,9 @@ export class MomoPayProcessingComponent implements OnInit {
   hideButton = false;
 
   ngOnInit() {
-    setTimeout(() => {
-      this.router.navigate(["hostedPayment/payments/success"]);
-    }, 2500);
+    // setTimeout(() => {
+    //   this.router.navigate(["hostedPayment/payments/success"]);
+    // }, 2500);
   }
 
   next() {

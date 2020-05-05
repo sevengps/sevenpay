@@ -25,35 +25,6 @@ $default: #ffffff;
   margin-top: 7.5%;
 }
 
-// .container-head {
-//   width: 100%;
-//   padding-top: 2%;
-//   padding-bottom: 2%;
-//   color: #ffffff;
-//   display: flex;
-//   justify-content: space-around;
-//   align-items: center;
-
-//   span {
-//     margin-top: 1.5rem;
-//     font-size: 1.5rem;
-//     font-family: "Rubik", sans-serif;
-//   }
-//   mat-icon.back {
-//     font-size: 3.8rem;
-//     margin-left: -4rem;
-//     margin-top: -0.6rem;
-//     cursor: pointer;
-//   }
-
-//   mat-icon.translate {
-//     font-size: 2rem;
-//     margin-right: -2rem;
-//     margin-top: 1rem;
-//     cursor: pointer;
-//   }
-// }
-
 .payment-container {
   position: relative;
   width: 850px;
@@ -105,27 +76,40 @@ $default: #ffffff;
   }
 }
 
-// @media screen and (min-width: 490px) {
-//   .payment-container {
-//     position: relative;
-//     width: 635px;
-//     height: 593px;
-//     margin: 0 auto;
-//     background: #0061a9;
-//     box-shadow: 0px 3px 6px 0px #00000029;
-//     opacity: 1;
-//   }
-// }
-// @media screen and (max-width: 314px) {
-//   .payment-container {
-//     position: relative;
-//     width: 470px;
-//     height: 593px;
-//     margin: 0 auto;
-//     background: #0061a9;
-//     box-shadow: 0px 3px 6px 0px #00000029;
-//     opacity: 1;
-//   }
+@media screen and (max-width: 490px) {
+  .payment-container {
+    position: relative;
+    width: 100%;
+    margin: 0 auto;
+    background: #0061a9;
+    box-shadow: 0px 0px 0px 0px $default;
+    opacity: 1;
+  }
+  .main-container {
+    margin-top: 0%;
+  }
+  .companyHead {
+    display: none;
+  }
+  .boder-bottom {
+    display: none;
+  }
+
+  .branding-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10rem;
+  }
+}
+@media screen and (max-width: 375px) {
+  .branding-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 5.59rem;
+  }
+}
 
 //   .stepper-container{
 //     width: 101%;
