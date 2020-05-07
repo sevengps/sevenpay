@@ -51,8 +51,14 @@ export class VisaPayComponent implements OnInit {
   visacardWaiting = false;
   buttonState = "Paiement";
   hideButton = false;
+  alternate;
 
   ngOnInit() {
+    this.cardErrorOrPaymentSuccess = document.querySelector(".noError");
+    this.cardErrorOrPaymentSuccess.innerHTML = `Vos informations personnelles ne seront utilisées à d'autres fins,
+            vous pouvez lire notre
+            <a href="#">politique de confidentialité </a>`;
+
     const style = {
       base: {
         fontSize: "1rem",
@@ -71,7 +77,7 @@ export class VisaPayComponent implements OnInit {
     this.cardNumber.mount(this.cardNumberElement.nativeElement);
 
     this.cardNumber.addEventListener("change", ({ error }) => {
-      this.cardErrorOrPaymentSuccess = error && error.message;
+      this.cardErrorOrPaymentSuccess.innerHTML = error && error.message;
       this.cardError = true;
     });
 
@@ -83,7 +89,7 @@ export class VisaPayComponent implements OnInit {
     this.cardExpiry.mount(this.cardExpiryElement.nativeElement);
 
     this.cardExpiry.addEventListener("change", ({ error }) => {
-      this.cardErrorOrPaymentSuccess = error && error.message;
+      this.cardErrorOrPaymentSuccess.innerHTML = error && error.message;
       this.cardError = true;
     });
 
@@ -95,7 +101,7 @@ export class VisaPayComponent implements OnInit {
     this.cardCvc.mount(this.cardCvcElement.nativeElement);
 
     this.cardCvc.addEventListener("change", ({ error }) => {
-      this.cardErrorOrPaymentSuccess = error && error.message;
+      this.cardErrorOrPaymentSuccess.innerHTML = error && error.message;
       this.cardError = true;
     });
   }
@@ -103,7 +109,7 @@ export class VisaPayComponent implements OnInit {
   async makePayment() {
     const { source, error } = await this.stripe.createSource(this.cardNumber);
     if (error) {
-      this.cardErrorOrPaymentSuccess = error.message;
+      this.cardErrorOrPaymentSuccess.innerHTML = error.message;
       this.cardError = true;
     } else {
       this.router.navigate(["hostedPayment/payments/visapay", "processing"]);

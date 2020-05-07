@@ -2,6 +2,7 @@ $secondary: #94b30d;
 $primary: #0767b1;
 $default: #ffffff;
 $connectors: #bfbfbf;
+$cardElementBackground: #edeeeb;
 @import url("https://fonts.googleapis.com/css2?family=Rubik&family=Source+Sans+Pro:wght@400;600&display=swap");
 
 .transaction-container {
@@ -29,9 +30,12 @@ $connectors: #bfbfbf;
 
 .stepper-container {
   width: 88%;
-  margin-top: 0.4rem;
-  margin-right: -9rem;
-  margin-bottom: 244px;
+  /* margin-top: 0.4rem; */
+  /* margin-right: -9rem; */
+  /* margin-bottom: 244px; */
+  position: relative;
+  top: -2rem;
+  left: 4rem;
 }
 .stepper-head {
   width: 70%;
@@ -266,25 +270,36 @@ $connectors: #bfbfbf;
     margin-left: -1rem;
     margin-top: -3rem;
     mat-form-field {
-      width: 100%;
-      margin-bottom: -0.5rem;
+      background-color: #edeeeb;
+      padding: 0rem 0.8rem;
+      width: 94%;
+      border-radius: 0.5rem;
+      position: relative;
+      bottom: -6rem;
+      left: 3px;
     }
     p {
       width: 95%;
+      position: relative;
+      bottom: -7.5rem;
+      left: 48px;
     }
     img {
-      margin-bottom: 1.6rem;
-      margin-top: -5rem;
-      margin-left: 10.2rem;
+      position: relative;
+      left: 11rem;
+      top: 3.5rem;
+      width: 21%;
     }
   }
 }
-
+.mat-form-field-appearance-legacy .mat-form-field-underline {
+  height: 0px !important;
+}
 .payment-button {
   width: 28rem;
   position: absolute;
   bottom: -20px;
-  right: 5%;
+  right: 6%;
   .card-btn {
     background-color: $secondary;
     height: 3rem;
@@ -333,13 +348,13 @@ $connectors: #bfbfbf;
     margin-right: 0rem;
     position: relative;
     left: -30px;
-    top: 156px;
+    top: 56px;
   }
 
   .payment-button {
     width: 74%;
     position: relative;
-    bottom: -479px;
+    bottom: -503px;
     margin: 0 auto;
     right: 0%;
   }
@@ -357,7 +372,7 @@ $connectors: #bfbfbf;
     display: block;
     position: relative;
     left: 32px;
-    top: -11px;
+    top: 88px;
     margin: auto;
     .total {
       color: #636363;
@@ -399,26 +414,25 @@ $connectors: #bfbfbf;
 
   .momoPay {
     width: 50%;
-    margin-top: 0rem;
-    margin-left: 0rem;
-    margin-bottom: 0rem;
+    /* margin-top: 0rem; */
+    /* margin-left: 0rem; */
+    /* margin-bottom: 0rem; */
+    margin: 0 auto;
     form {
-      width: 96%;
-      margin-bottom: 7rem;
-      margin-left: -1rem;
-      margin-top: -3rem;
+      width: 100%;
+      /* margin-bottom: 7rem; */
+      /* margin-left: -1rem; */
+      /* margin-top: -3rem;*/
       mat-form-field {
-        width: 149%;
+        width: 135%;
         position: relative;
-        left: -24px;
-        bottom: -31px;
-        /* margin: auto; */
-        /* margin-bottom: -0.5rem;*/
+        left: -30px;
+        bottom: -149px;
       }
       p {
         width: 154%;
         position: relative;
-        top: 26px;
+        top: 144px;
         line-height: 1.8;
         left: -18px;
       }
@@ -434,80 +448,23 @@ $connectors: #bfbfbf;
 
 @media screen and (max-width: 375px) {
   .stepper-container {
-    width: 100%;
-    position: relative;
-    margin: auto;
-    align-self: center;
-    left: -43px;
-    top: 20px;
+    left: -44px;
+    top: 56px;
   }
 
   .total-container-responsive {
     display: block;
     position: relative;
-    left: 12px;
-    top: 40px;
+    left: 16px;
+    top: 98px;
     margin: auto;
-    .total {
-      color: #636363;
-      font-family: "Rubik", sans-serif;
-      font-size: 1.8rem;
-      position: relative;
-      left: 53px;
-    }
-    .amount {
-      color: #94b30d;
-      font-size: 3rem;
-      position: relative;
-      left: -12px;
-      top: 8px;
-    }
-    .currency {
-      color: #94b30d;
-      position: relative;
-      font-size: 1.6rem;
-      left: -4px;
-      top: 5px;
-    }
   }
 
-  .momoPay {
-    width: 50%;
-    margin-top: 0rem;
-    margin-left: 0rem;
-    margin-bottom: 0rem;
-    form {
-      width: 96%;
-      margin-bottom: 7rem;
-      margin-left: -1rem;
-      margin-top: -3rem;
-      mat-form-field {
-        width: 147%;
-        position: relative;
-        left: -22px;
-        bottom: -86px;
-      }
-      p {
-        width: 154%;
-        position: relative;
-        top: 90px;
-        line-height: 1.4;
-        left: -18px;
-      }
-      img {
-        margin-bottom: 0rem;
-        margin-top: 0rem;
-        margin-left: 0rem;
-        display: none;
-      }
-    }
-  }
-
-  .payment-button {
-    width: 74%;
-    position: relative;
-    bottom: -459px;
-    margin: 0 auto;
-    right: 0%;
-  }
+  // .payment-button {
+  //   width: 74%;
+  //   position: relative;
+  //   bottom: -499px;
+  //   margin: 0 auto;
+  //   right: 0%;
+  // }
 }

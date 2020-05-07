@@ -99,7 +99,16 @@ $default: #ffffff;
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-top: 10rem;
+    position: relative;
+    top: 6rem;
+  }
+
+  .mobilePhone-Container {
+    display: none;
+  }
+
+  .creditCard-Container {
+    display: none;
   }
 }
 @media screen and (max-width: 375px) {
@@ -110,58 +119,3 @@ $default: #ffffff;
     margin-top: 5.59rem;
   }
 }
-
-//   .stepper-container{
-//     width: 101%;
-//     margin-top: -1.1rem;
-//     margin-left: 2rem;
-// }
-
-// .total-container {
-//     margin-top: -6.5rem;
-//     margin-left: -1.5rem;
-//     margin-bottom: 3rem;
-// }
-// .total-container .total {
-//     color: #636363;
-//     font-family: "Rubik", sans-serif;
-//     font-size: 1.8rem;
-//     margin-left: 6rem;
-// }
-
-// .total-container .amount{
-//     color: #94b30d;
-//     font-size: 3.2rem;
-//     margin-left: 3rem;
-// }
-
-// .select-form {
-//     width: 85%;
-//     margin-bottom: 9rem;
-//     /* margin-right: 22rem; */
-//     margin-left: -4rem;
-// }
-
-// .stepper-head[_ngcontent-euq-c4] .number-large[_ngcontent-euq-c4]::before {
-//     height: 43px;
-//     width: 42px;
-//     top: -21px;
-// }
-
-// .stepper-head[_ngcontent-euq-c4] .step-number-2[_ngcontent-euq-c4]::before {
-//     content: "2";
-//     height: 33px;
-//     width: 33px;
-//     background-color: #bfbfbf;
-//     border-radius: 100%;
-//     position: relative;
-//     left: 0px;
-//     top: -16px;
-//     display: flex;
-//     flex-direction: row;
-//     align-items: center;
-//     justify-content: center;
-//     color: #ffffff;
-// }
-
-// }

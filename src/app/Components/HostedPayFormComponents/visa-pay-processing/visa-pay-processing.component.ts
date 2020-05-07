@@ -1,7 +1,7 @@
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
 import { PaymentsService } from "src/app/Services/payments.service";
 import { Router } from "@angular/router";
-
+declare const Stripe;
 @Component({
   selector: "app-visa-pay-processing",
   templateUrl: "./visa-pay-processing.component.html",
@@ -54,7 +54,53 @@ export class VisaPayProcessingComponent implements OnInit {
   ngOnInit() {
     setTimeout(() => {
       this.router.navigate(["hostedPayment/payments/success"]);
-    }, 2500);
+    }, 3000);
+
+    const style = {
+      base: {
+        fontSize: "1rem",
+        display: "none",
+      },
+    };
+
+    this.stripe = Stripe("pk_test_cMSb95rYnQKA3lf8PkouCxxn00qYNqfZ1E");
+    const elements = this.stripe.elements();
+
+    this.cardNumber = elements.create("cardNumber", {
+      showIcon: true,
+      iconStyle: "solid",
+      placeholder: "4242 4242 4242 4242 4242",
+    });
+    this.cardNumber.mount(this.cardNumberElement.nativeElement);
+
+    this.cardNumber.addEventListener("change", ({ error }) => {
+      this.cardErrorOrPaymentSuccess.innerHTML = error && error.message;
+      this.cardError = true;
+    });
+
+    this.cardExpiry = elements.create("cardExpiry", {
+      showIcon: true,
+      iconStyle: "solid",
+      placeholder: "09/22",
+    });
+    this.cardExpiry.mount(this.cardExpiryElement.nativeElement);
+
+    this.cardExpiry.addEventListener("change", ({ error }) => {
+      this.cardErrorOrPaymentSuccess.innerHTML = error && error.message;
+      this.cardError = true;
+    });
+
+    this.cardCvc = elements.create("cardCvc", {
+      showIcon: true,
+      iconStyle: "solid",
+      placeholder: "645",
+    });
+    this.cardCvc.mount(this.cardCvcElement.nativeElement);
+
+    this.cardCvc.addEventListener("change", ({ error }) => {
+      this.cardErrorOrPaymentSuccess.innerHTML = error && error.message;
+      this.cardError = true;
+    });
   }
 
   next() {

@@ -45,6 +45,11 @@
           <div class="payment-container" [ngClass]="{ loading: loading }">
             <div class="header-container">
               <img src="assets/icons/visaCard.png" alt="" />
+              <div class="total-container-responsive">
+                <span class="total">Total:&nbsp;</span><br />
+                <span class="amount">{{ total }}</span>
+                <span class="currency">XAF</span>
+              </div>
             </div>
             <mat-dialog-content>
               <form class="stripeContainer">
@@ -85,7 +90,7 @@
                 </div>
 
                 <p
-                  class="cardErrors"
+                  class="cardErrors noError"
                   [ngClass]="{
                     cardErrors: cardError,
                     'payment-success': paymentSuccess

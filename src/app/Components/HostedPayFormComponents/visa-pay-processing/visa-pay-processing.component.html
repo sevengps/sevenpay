@@ -39,15 +39,20 @@
           ></span>
         </div>
       </div>
-      <div class="momoPay visaCardPay-waiting">
+      <div class="momoPay">
         <form class="">
           <!-- STRIPE THINGS HERE -->
           <div class="payment-container" [ngClass]="{ loading: loading }">
             <div class="header-container">
               <img src="assets/icons/visaCard.png" alt="" />
+              <div class="total-container-responsive">
+                <span class="total">Total:&nbsp;</span><br />
+                <span class="amount">{{ total }}</span>
+                <span class="currency">XAF</span>
+              </div>
             </div>
             <mat-dialog-content>
-              <form class="stripeContainer">
+              <form class="stripeContainer visaCardPay-waiting">
                 <div class="card-names">
                   <span class="name-cardNumber">CARD NUMBER</span>
                   <span class="name-CVC">CVC</span>
@@ -84,13 +89,15 @@
                 </div>
 
                 <p
-                  class="cardErrors"
+                  class="noError"
                   [ngClass]="{
                     cardErrors: cardError,
                     'payment-success': paymentSuccess
                   }"
                 >
-                  {{ cardErrorOrPaymentSuccess }}
+                  Vos informations personnelles ne seront utilisées à d'autres
+                  fins, vous pouvez lire notre
+                  <a href="#">politique de confidentialité </a>
                 </p>
               </form>
             </mat-dialog-content>

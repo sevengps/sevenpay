@@ -40,14 +40,17 @@
         </div>
       </div>
       <div class="successful-payment" *ngIf="successPayment">
-        <span>
-          Votre paiement de <strong>{{ total }} </strong><small>XAF</small> a
-          &eacute;t&eacute; bien effectu&eacute;
-        </span>
-        <p class="payment-date">Date de paiement : {{ transDate }}</p>
-        <p class="payment-id">
-          Transaction <span class="id">{{ transId }}</span>
-        </p>
+        <div class="responsiveContainer">
+          <p class="firstHead">Votre paiement de</p>
+          <p class="totalAmt">
+            <strong>{{ total }} </strong><small>XAF</small>
+          </p>
+          <p class="effectivePay">a &eacute;t&eacute; bien effectu&eacute;</p>
+          <p class="payment-date">Date de paiement : {{ transDate }}</p>
+          <p class="payment-id">
+            Transaction <span class="id">{{ transId }}</span>
+          </p>
+        </div>
         <img
           mat-card-image
           class="successIcon"
