@@ -388,9 +388,9 @@ $connectors: #bfbfbf;
 .noError {
   font-size: 14px;
   word-spacing: 4px;
-  width: 157%;
+  width: 83%;
   position: relative;
-  left: -41px;
+  left: 21px;
   text-align: justify;
   top: -29px;
 }
@@ -441,6 +441,16 @@ $connectors: #bfbfbf;
     width: 60%;
     margin-right: 0rem !important;
     margin-top: 3rem;
+  }
+
+  .noError {
+    font-size: 14px;
+    word-spacing: 4px;
+    width: 157%;
+    position: relative;
+    left: -41px;
+    text-align: justify;
+    top: -29px;
   }
 
   .total-container-responsive {
