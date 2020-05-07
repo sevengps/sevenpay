@@ -7,7 +7,9 @@ import { Component, OnInit } from "@angular/core";
   styleUrls: ["./success-transaction.component.scss"],
 })
 export class SuccessTransactionComponent implements OnInit {
-  transDate = new Date().toUTCString();
+  transDate = new Date("Thu, 07 May 2020").toUTCString();
+  Date;
+  Time;
   currentUrl: any;
 
   constructor(private router: Router) {}

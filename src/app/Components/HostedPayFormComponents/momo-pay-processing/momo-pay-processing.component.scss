@@ -75,7 +75,9 @@ $connectors: #bfbfbf;
     justify-content: center;
     color: #ffffff;
   }
-
+  .privacy {
+    text-align: justify;
+  }
   .step-number-2::before {
     content: "2";
     height: 24px;
