@@ -14,10 +14,10 @@ $default: #ffffff;
   display: flex;
 }
 .companyHead {
-  margin-bottom: -0.08rem;
+  margin-bottom: 0.92rem;
 }
 .mat-h2 {
-  color: $primary;
+  color: #169488;
 }
 .main-container {
   background: #f2f4f8;
@@ -111,6 +111,69 @@ $default: #ffffff;
     display: none;
   }
 }
+
+select {
+  width: 70px;
+  height: 20px;
+}
+
+.language-container-english {
+  background-color: white;
+  padding: 3px;
+  position: relative;
+  top: 3px;
+  right: -8.5rem;
+
+  img {
+    margin-bottom: -5px;
+    height: 13.5px;
+    width: 20px;
+    padding: 3px;
+  }
+
+  select {
+    border: none;
+    background: white;
+  }
+}
+
+.language-container-french {
+  display: none;
+  background-color: white;
+  padding: 3px;
+  position: relative;
+  right: 10.5rem;
+  top: 26px;
+  right: -35px;
+  img {
+    margin-bottom: -5px;
+    height: 13.5px;
+    width: 20px;
+    padding: 3px;
+  }
+
+  select {
+    border: none;
+    background: white;
+  }
+}
+
+.language-container-english,
+select,
+option:hover {
+  cursor: pointer;
+}
+
+.language-container-french,
+select,
+option:hover {
+  cursor: pointer;
+}
+
+.showElement {
+  display: inline-block;
+}
+
 @media screen and (max-width: 375px) {
   .branding-container {
     display: flex;

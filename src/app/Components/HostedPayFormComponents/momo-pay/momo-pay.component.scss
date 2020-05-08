@@ -271,12 +271,13 @@ $cardElementBackground: #edeeeb;
     margin-top: -3rem;
     mat-form-field {
       background-color: #edeeeb;
-      padding: 0rem 0.8rem;
+      padding: 0rem 0.6rem;
       width: 94%;
       border-radius: 0.5rem;
       position: relative;
       bottom: -6rem;
       left: 3px;
+      border: 1px solid #bdbdbdbd;
     }
     p {
       width: 95%;

@@ -345,30 +345,33 @@ $connectors: #bfbfbf;
 .cardNumber {
   margin: 2.5rem 0.5rem 0rem 1rem;
   background-color: $cardElementBackground;
-  padding: 0.8rem;
+  padding: 0.7rem;
   border-radius: 0.5rem;
   width: 60%;
+  border: 1px solid #bdbdbd;
 }
 
 .cardCvc {
   margin: 2.5rem 1.5rem 0rem 0.5rem;
   background-color: #edeeeb;
-  padding: 0.8rem;
+  padding: 0.7rem;
   border-radius: 0.5rem;
-  width: 14.5%;
+  width: 13.5%;
+  border: 1px solid #bdbdbd;
 }
 
 .name-cardHolder {
   margin: 1rem 0.5rem 0.5rem 1rem;
-  font-size: 0.89rem;
+  font-size: 0.7rem;
   font-weight: 590;
 }
 .cardHolder {
   background-color: #edeeeb;
-  padding: 0.8rem;
+  padding: 0.7rem;
   border-radius: 0.5rem;
   margin-left: 1rem;
   width: 82%;
+  border: 1px solid #bdbdbd;
 }
 
 .name-cardExpiry {
@@ -378,10 +381,11 @@ $connectors: #bfbfbf;
 }
 .cardExp {
   background-color: $cardElementBackground;
-  padding: 0.8rem;
+  padding: 0.7rem;
   border-radius: 0.5rem;
   margin-left: 1rem;
-  width: 83%;
+  width: 82%;
+  border: 1px solid #bdbdbd;
 }
 
 .paymentBtn {
@@ -409,9 +413,8 @@ $connectors: #bfbfbf;
 
 .cardErrors {
   color: red;
-  font-size: 1rem;
-  padding: 1rem;
-  margin: 0rem 0rem 0.5rem 0rem;
+  font-size: 14px;
+  text-align: center;
 }
 .payment-success {
   color: green;
@@ -420,13 +423,13 @@ $connectors: #bfbfbf;
   margin: 0rem 0rem 1rem 0rem;
 }
 .noError {
-  font-size: 14px;
+  font-size: 13.5px;
   word-spacing: 4px;
-  width: 157%;
+  width: 83%;
   position: relative;
-  left: -41px;
+  left: 21px;
   text-align: justify;
-  top: -12px;
+  top: -1px;
 }
 .visaCardPay-waiting {
   opacity: 0.3;
@@ -568,7 +571,6 @@ $connectors: #bfbfbf;
 
   .cardNumber {
     background-color: #edeeeb;
-    padding: 0.8rem;
     border-radius: 0.5rem;
     width: 117%;
     left: -50px;
@@ -578,17 +580,15 @@ $connectors: #bfbfbf;
 
   .cardCvc {
     background-color: #edeeeb;
-    padding: 0.8rem;
     border-radius: 0.5rem;
     width: 54.5%;
     position: relative;
-    top: 4.2rem;
+    top: 4rem;
     left: 101px;
   }
 
   .cardExp {
     background-color: #edeeeb;
-    padding: 0.8rem;
     border-radius: 0.5rem;
     width: 59%;
     position: relative;
@@ -637,7 +637,6 @@ $connectors: #bfbfbf;
 
   .cardNumber {
     background-color: #edeeeb;
-    padding: 0.8rem;
     border-radius: 0.5rem;
     width: 116%;
     left: -46px;
@@ -647,17 +646,15 @@ $connectors: #bfbfbf;
 
   .cardCvc {
     background-color: #edeeeb;
-    padding: 0.8rem;
     border-radius: 0.5rem;
     width: 54.5%;
     position: relative;
-    top: 4.2rem;
+    top: 4rem;
     left: 85px;
   }
 
   .cardExp {
     background-color: #edeeeb;
-    padding: 0.8rem;
     border-radius: 0.5rem;
     width: 59%;
     position: relative;

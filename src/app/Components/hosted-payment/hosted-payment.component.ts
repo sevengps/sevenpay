@@ -10,6 +10,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 export class HostedPaymentComponent implements OnInit {
   constructor(private router: Router) {}
 
+  frenchElement: any;
   paymentHeader = "Selectionnez de votre mode de paiement";
   paymentHeaderResponsive = "Mode de paiement";
   selectedGateway = "";
@@ -22,7 +23,9 @@ export class HostedPaymentComponent implements OnInit {
   waiting = false;
   formState;
   getUrl = this.router.url;
-  ngOnInit() {}
+  ngOnInit() {
+    this.frenchElement = document.querySelector(".language-container-french");
+  }
 
   showPhone = false;
   showCard = false;
@@ -62,5 +65,15 @@ export class HostedPaymentComponent implements OnInit {
         this.currentRoute = event.currentRoute;
       }
     }
+  }
+
+  showFrenchOption() {
+    this.frenchElement.classList.add("showElement");
+    setTimeout(() => {
+      this.hideFrenchOption();
+    }, 2500);
+  }
+  hideFrenchOption() {
+    this.frenchElement.classList.remove("showElement");
   }
 }
