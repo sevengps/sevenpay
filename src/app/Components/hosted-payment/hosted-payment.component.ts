@@ -1,4 +1,4 @@
-import { PaymentsService } from "./../../Services/payments.service";
+import { PaymentsService } from "src/app/Services/payments.service";
 import { Component, OnInit, SimpleChanges, OnChanges } from "@angular/core";
 import { Router, ActivatedRoute } from "@angular/router";
 
@@ -8,7 +8,10 @@ import { Router, ActivatedRoute } from "@angular/router";
   styleUrls: ["./hosted-payment.component.scss"],
 })
 export class HostedPaymentComponent implements OnInit {
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private paymentsService: PaymentsService
+  ) {}
 
   frenchElement: any;
   paymentHeader = "Selectionnez de votre mode de paiement";
@@ -23,8 +26,21 @@ export class HostedPaymentComponent implements OnInit {
   waiting = false;
   formState;
   getUrl = this.router.url;
+
   ngOnInit() {
     this.frenchElement = document.querySelector(".language-container-french");
+    // access api endpoint to get available payment providers
+    this.paymentsService.getAuthHeader().subscribe(
+      (auth) => {
+        this.paymentsService.getAllAvailableProviders(auth.header);
+        console.log(auth);
+      },
+      (error) => {
+        if (!error.success) {
+          this.router.navigate(["/unauthorizedAccess"]);
+        }
+      }
+    );
   }
 
   showPhone = false;

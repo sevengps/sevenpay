@@ -1,7 +1,6 @@
 import { Injectable } from "@angular/core";
 import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Observable } from "rxjs";
-import * as $ from "jquery";
 
 @Injectable({
   providedIn: "root",
@@ -17,10 +16,87 @@ export class PaymentsService {
   };
 
   private baseUrl = "https://sevenpay.herokuapp.com/";
+  // private baseUrl = "http://localhost:5000/";
   private paymentbaseUrl = "http://192.168.100.10/payments/payments/";
+  /**
+   *
+   * TRY LOCALS
+   */
+  myEasyLight(body): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        Authorization:
+          "Basic username=Sinclairekambang:password=1234567891012345",
+        "Access-Control-Allow-Origin": "*",
+      }),
+    };
+    body = {
+      transactions: [
+        {
+          amount: 37500,
+          bill_ref: 1452877897,
+        },
+      ],
+      transaction_id: 587946213,
+      total_amount: 37500,
+      return_url: "https://www.eneocameroon.cm/index.php/en/",
+      API_KEY: "khdfkjshkjds56456465sdfsdfsdfsdfsdf6544dxhsajkhfds9678946vsdv",
+    };
+    console.log("hello");
+
+    return this.httpClient.post<any>(
+      this.baseUrl + "sevenpay/payment/pay",
+      body,
+      httpOptions
+    );
+  }
+
+  successRedirect(body): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+      }),
+    };
+    body = {
+      transactions: [
+        {
+          amount: 37500,
+          bill_ref: 1452877897,
+        },
+      ],
+      transaction_id: 587946213,
+      total_amount: 37500,
+      return_url: "https://eneo/myeasylight.com",
+      API_KEY: "khdfkjshkjds56456465sdfsdfsdfsdfsdf",
+    };
+    console.log("hello");
+
+    return this.httpClient.post<any>(
+      this.baseUrl + "sevenpay/payment/success",
+      body,
+      httpOptions
+    );
+  }
+
+  getAuthHeader(): Observable<any> {
+    return this.httpClient.get<any>(this.baseUrl + "sevenpay/payment/auth");
+  }
+
+  getAllAvailableProviders(auth): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        Authorization: auth,
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      }),
+    };
+    return this.httpClient.get<any>(
+      this.baseUrl + "sevenpay/payment/providers"
+    );
+  }
 
   /** ALL PAYMENT METHODS */
-
   //CREDIT CARD PAYMENT WITH STRIPE
   makeCreditCardPayments(card): Observable<any> {
     const httpOptions = {

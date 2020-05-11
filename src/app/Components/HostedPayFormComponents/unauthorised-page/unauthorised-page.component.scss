@@ -1,0 +1,43 @@
+$secondary: #96b30d;
+$primary: #0767b1;
+$default: #e1e2e7;
+
+mat-toolbar {
+  justify-content: space-between;
+  img {
+    height: 70%;
+  }
+}
+
+.unauthorized-container {
+  position: absolute;
+  width: 100%;
+}
+.parent-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 5rem;
+  position: relative;
+  top: 80px;
+}
+.image-container {
+  img {
+    width: 50%;
+    position: relative;
+    left: 47px;
+  }
+}
+.error-message-container {
+  color: red;
+  position: relative;
+  top: -27px;
+  p {
+    font-size: 3rem;
+  }
+}
+.detail-error-info {
+  font-size: 1rem;
+  position: relative;
+  top: -85px;
+}

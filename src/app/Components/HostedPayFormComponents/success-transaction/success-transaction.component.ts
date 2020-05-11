@@ -1,3 +1,4 @@
+import { PaymentsService } from "src/app/Services/payments.service";
 import { Router } from "@angular/router";
 import { Component, OnInit } from "@angular/core";
 
@@ -12,7 +13,10 @@ export class SuccessTransactionComponent implements OnInit {
   Time;
   currentUrl: any;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private paymentService: PaymentsService
+  ) {}
 
   successPayment = true;
   openStep3 = true;
@@ -51,7 +55,11 @@ export class SuccessTransactionComponent implements OnInit {
     console.log(this.currentUrl);
     if (this.currentUrl === "/hostedPayment/payments/success") {
       this.buttonState = "Continuer";
-      this.router.navigate([""]);
+      // this.router.navigate([""]);
+      this.paymentService.successRedirect({}).subscribe((data)=>{
+        console.log(data);
+        
+      });
     }
   }
 }

@@ -1,3 +1,4 @@
+import { UnauthorisedPageComponent } from "./Components/HostedPayFormComponents/unauthorised-page/unauthorised-page.component";
 import { PaymentHomeComponent } from "./Components/HostedPayFormComponents/payment-home/payment-home.component";
 import { MomoPayProcessingComponent } from "./Components/HostedPayFormComponents/momo-pay-processing/momo-pay-processing.component";
 import { VisaPayProcessingComponent } from "./Components/HostedPayFormComponents/visa-pay-processing/visa-pay-processing.component";
@@ -90,6 +91,11 @@ const routes: Routes = [
         component: PaymentHomeComponent,
       },
     ],
+  },
+
+  {
+    path: "unauthorizedAccess",
+    component: UnauthorisedPageComponent,
   },
 ];
 
