@@ -37,6 +37,14 @@ export class PaymentsService {
           amount: 37500,
           bill_ref: 1452877897,
         },
+        {
+          amount: 47500,
+          bill_ref: 148956897,
+        },
+        {
+          amount: 77500,
+          bill_ref: 14526446897,
+        },
       ],
       transaction_id: 587946213,
       total_amount: 37500,
@@ -56,6 +64,7 @@ export class PaymentsService {
     const httpOptions = {
       headers: new HttpHeaders({
         "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
       }),
     };
     body = {
@@ -80,6 +89,12 @@ export class PaymentsService {
   }
 
   getAuthHeader(): Observable<any> {
+    const httpOptions = {
+      headers: new HttpHeaders({
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      }),
+    };
     return this.httpClient.get<any>(this.baseUrl + "sevenpay/payment/auth");
   }
 
